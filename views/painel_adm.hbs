@@ -1,0 +1,42 @@
+
+
+
+<h1> Painel funcionario</h1>
+
+
+
+<div style="display: flex; flex-direction:column; width:100%;  justify-content: space-between;
+    align-items: center">
+    <h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;"> Chamar senha</h1>
+
+{{!-- grupo de senha 2 tipos comum prferenfcial --}}
+
+    <div class="grupo" style="display:flex; gap: 10px;">
+        <div class="senha">
+
+             <button id ='btn_comum_adm' onclick="atender_senha(this.id)">
+                <h2>Chamar Senha Comum</h2>
+            </button>
+
+
+    </div>
+    <div class="senha">
+
+            <button id ='btn_preferencial_adm' onclick="atender_senha(this.id)">
+                <h2> Chamar Senha Preferencial</h2>
+            </button>
+
+        </div>
+    </div>
+    <h1>Senhas pendentes</h1>
+    <div class="pendentes" style="display:flex; flex-direction:column; gap: 10px; width:100%;  justify-content:center; align-items: center;">
+         {{#each posts}}
+            <div class="senha_pendente" style=" background-color:aquamarine;margin:10px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;">
+                <h1>TIPO SENHA: {{dataValues.tipo_senha}}</h1>
+                <h2> senha: {{dataValues.senha}} </h2>
+                <small>{{dataValues.createdAt}}</small>
+            </div>
+         {{/each}}
+    </div>
+
+</div>

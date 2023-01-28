@@ -1,0 +1,46 @@
+
+
+{{!-- select giches disponiveis --}}
+
+
+
+<div =class="main_device flex-coll">
+
+    <div class="header_device">
+    </div>
+
+    <div class="content-device flex-coll">
+        <div class="sub-menu-view flex-row">
+            <h1 class="titulo-device-choice">Selecione o guiche</h1>
+            <div class="btn-voltar-main" onclick="voltar_main_choice_device()">Voltar</div>
+        </div>
+        
+
+        <div class="group-box-devices flex-row">
+            {{#each guiche}}
+            <div class="box-giche device-adm flex-coll" id="{{dataValues.id}}" onclick="choice_guiche(this.id)">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/0.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>{{dataValues.nome}} {{dataValues.descricao}}</h1>
+                </div>
+                <div class="box-status-giche flex-coll">
+                    {{!-- condicoes no handle par se estatos for 0 --}}
+                    {{#ifCond dataValues.status_giche '==' 0}}
+                        <div class="status-giche-box disponivel">Disponivel</div>
+                    {{else}}
+                        <div class="status-giche-box ocupado">Ocupado</div>
+                    {{/ifCond}}
+
+
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+
+    </div>
+
+    
+</div>

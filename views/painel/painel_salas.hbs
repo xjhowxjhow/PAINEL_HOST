@@ -1,0 +1,62 @@
+
+<script> 
+    var sockets = io();
+    sockets.on('show_senha_painel_sala', function(data){
+    console.log('nova senha chamada atualizar pagina salas');
+    // emite um som para avisar que a senha foi chamada
+    var audio = new Audio('/src/device/bip.mp3');
+    audio.play();
+    // atualiza a
+    location.reload(true);
+}); 
+</script>
+
+
+<div class="main flex-row">
+    
+    <div class="left-content flex-coll">
+        
+        <div class="logo-top">
+            <h1> Painel senhas</h1>
+        </div>
+        
+        <div class="painel_senha_act flex-coll">
+            <h1 class="tipo_senha_act"> TIPO DE SENHA: {{ultimas_salas.0.dataValues.tipo_senha}}</h1>
+            {{#ifCond posts '==' 10}}
+                <h1 class="titulo_senha_act"> SENHA CHAMADA:  {{ultimas_salas.0.dataValues.senha}}</h1>
+            {{else}}
+                {{#ifCond posts.dataValues.chamar_por '==' 'Nome Cliente'}}
+                    <h1 class="titulo_senha_act"> POR FAVOR:  {{posts.dataValues.nome_paciente}}</h1>
+                {{else}}
+                    <h1 class="titulo_senha_act"> SENHA :  {{posts.dataValues.senha}}</h1>
+                {{/ifCond}}
+            {{/ifCond}}
+            <h1 class="text-big-guiche"> Dirija-se a {{ultimas_salas.0.dataValues.nome}} {{ultimas_salas.0.dataValues.sala}} </h1>
+        </div>
+
+        <div class="bottom-content">
+            <h1>{{ultimas_salas.0.dataValues.updatedAt}}</h1>
+        </div>
+    </div>
+    <div class="right-content flex-coll">
+        <div class="logo-top">
+            <h1> Ultimas Chamadas</h1>
+        </div>
+        <div class="group_senhas flex-coll">
+            {{#each ultimas_salas}}
+                <div class="ultimas_senhas flex-coll">
+
+                    <h1 class="painel_s_tipo">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
+                    <h1 class="painel_s_senha"> SENHA: {{dataValues.senha}} {{dataValues.sala}} {{dataValues.nome}}  </h1>
+                    <small class="painel_s_senha">{{dataValues.createdAt}}</small>
+                    <hr>
+                </div>
+            {{/each}}
+        </div>
+
+    </div>
+</div>
+
+
+
+

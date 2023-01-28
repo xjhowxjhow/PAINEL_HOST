@@ -1,0 +1,91 @@
+
+
+
+
+
+
+<div =class="main_device flex-coll">
+
+    <div class="header_device">
+    </div>
+
+    <div class="content-device flex-coll">
+        <h1 class="titulo-device-choice">Olá bem vindo, escolha o tipo de serviço</h1>
+        {{!-- atendimentos tools --}}
+        <div class="group-box-devices flex-row">
+
+            <div class="box-device device-adm flex-coll" id="enter_view_giches" onclick="choiceDevice(this.id)">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/0.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Giches (Recepcao)</h1>
+                </div>
+                <div class="box-device-botton flex-coll">
+
+                </div>
+            </div>
+
+
+            <div class="box-device device-adm flex-coll" onclick="choiceDevice(this.id)" id="enter_view_salas" >
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/2.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Sala Atendimento</h1>
+                </div>
+
+            </div>
+
+        </div>
+        {{!-- adm tools --}}
+        <div class="group-box-devices flex-row">
+
+            <div class="box-device device-adm flex-coll" onclick="choiceDevice(this.id)" id="device_btn_user">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/1.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Toten (Senha)</h1>
+                </div>
+
+            </div>
+
+            <div class="box-device device-adm flex-coll" onclick="choiceDevice(this.id)" id="device_btn_panel">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/3.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Painel (Recepcao)</h1>
+                </div>
+
+            </div>
+            
+            <div class="box-device device-adm flex-coll" onclick="choiceDevice(this.id)" id="enter_panel_salas">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/3.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Painel (Salas)</h1>
+                </div>
+
+            </div>
+
+
+
+            {{!-- adm --}}
+            <div class="box-device device-adm flex-coll" onclick="choiceDevice(this.id)" id="config_adm">
+                <div class="box-device-img flex-coll">
+                    <img src="src/device/4.png" alt="">
+                </div>
+                <div class="box-device-title">
+                    <h1>Administrador(Painel)</h1>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    
+</div>

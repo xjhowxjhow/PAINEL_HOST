@@ -1,0 +1,45 @@
+.btn-chama-comum-sala{
+    background-color: rgb(228, 62, 11);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+.btn-chama-comum-sala:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}
+
+.btn-chama-preferencial-sala{
+    background-color: rgb(0, 180, 150);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.btn-chama-preferencial-sala:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}
+
+.box-btn-encaminhar-p-sala{
+    background-color: rgb(0, 180, 150);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}

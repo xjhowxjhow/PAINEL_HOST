@@ -1,0 +1,125 @@
+
+{{!-- exclui sala edita sala edita td --}}
+
+
+
+
+
+<div class="main-adm flex-row">
+
+    <div class ="menu-bar-adm flex-coll">
+
+            <div class="menu-bar-adm-item2 flex-coll">
+                <p>Configurações</p>
+            </div>
+
+            <div class="menu-bar-adm-item flex-coll" id="pag_adm_guiche" onclick="pages_adm(this.id)">
+                <a>Giches</a>
+            </div>
+
+            <div class="menu-bar-adm-item flex-coll active-adm" id="pag_adm_salas" onclick="pages_adm(this.id)">
+                <a>Salas</a>
+            </div>
+
+            <div class="menu-bar-adm-item flex-coll">
+                <a href="/adm/relatorios">Configurações Painel</a>
+            </div>
+    </div>
+
+
+
+    <div class="group-content-adm flex-coll">
+        
+        <div class ="header-adm flex-row"></div>
+        <div class="content-adm flex-coll">
+            {{!-- lsita sala  --}}
+
+            <div class="modal-content" id="modal-giche">
+                <div class="modal-header flex-row">
+                    <h2>Nova Sala</h2>
+                    <div class="btn-close-modal-add-guiche flexbotao" id="btn-close-modal-add-guiche">
+                        <p class="p-inside-btn">FECHAR</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    {{!-- info new sala --}}
+                    <div class="box-inputs-new-giches flex-row">
+                        <div class="box-inputs-new-giches-item flex-coll">
+                            <label >Nome</label>
+                            <input type="text" name="nome_sala_new" id="nome_sala_new">
+                        </div>
+                        <div class=" box-inputs-new-giches-item flex-coll">
+                            <label>Tipo Sala</label>
+                            <input type="text" name="desc_sala_new" id="desc_sala_new">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer flex-row">
+                     <div class="btn-add-guiche-cancelar flexbotao" id="btn-add-sala-cancelar">
+                        <p class="p-inside-btn">Cancelar</p>
+                     </div>
+                     <div class="btn-add-guiche-salvar flexbotao" id="vtnsalvarsala" onclick="add_new_sala()">
+                        <p>Salvar</p>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="box-title-giches flex-coll">
+                <h1>Salas Cadastradas</h1>
+            </div>
+
+            <div class="grupo-actions-giches flex-row">
+                <div class="btn-add-new-giche flex-coll" id="btn-add-new-giche">
+                    <p>Adicionar Sala</p>
+                </div>
+            </div>
+            
+            <div class="list-giches flex-coll">
+                <div class="header-titles-giches flex-row">
+                    <div class="title-giches flex-coll">
+                        <p>Nome</p>
+                    </div>
+                    <div class="title-giches flex-coll">
+                        <p>Tipo sala</p>
+                    </div>
+                    <div class="title-giches flex-coll">
+                        <p>Ativo</p>
+                    </div>
+                    <div class="title-giches flex-coll">
+                        <p>Editar</p>
+                    </div>
+                    <div class="title-giches flex-row">
+                        <p>Excluir</p>
+                    </div>
+                </div>
+                {{#each salas_actives}}
+                <div class="row-list-giches flex-row">           
+                        <div class="item-giches flex-coll">
+                            <p>{{dataValues.nome}}</p>
+                        </div>
+                        <div class="item-giches flex-coll">
+                            <p>{{dataValues.tipo_sala}}</p>
+                        </div>
+                        <div class="item-giches flex-coll">
+                            <p>{{dataValues.status_sala}}</p>
+                        </div>
+                        <div class="item-giches flex-coll">
+                            <div class="btn-edit-giches flex-coll">
+                                <p>Editar</p>
+                            </div>
+                        </div>
+                        <div class="item-giches flex-row">
+                            <div class="btn-delet-giches flex-coll" id="{{dataValues.id}}" onclick="delete_sala_list(this.id)">
+                                <p>Excluir</p>
+                            </div>
+                        </div>
+                </div>
+                {{/each}}
+
+
+
+            </div>
+        </div>
+    
+
+</div>

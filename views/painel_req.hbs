@@ -1,0 +1,31 @@
+
+
+{{!-- importa o javascript --}}
+
+<div style="display: flex; flex-direction:column; width:100%;  justify-content: space-between;
+    align-items: center">
+    <h1 style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;"> Requisitar senha</h1>
+
+{{!-- grupo de senha 2 tipos comum prferenfcial --}}
+
+    <div class="grupo" style="display:flex; gap: 10px;">
+    <div class="senha">
+        
+             <button id ='btn_comum' onclick="solicitar_senha(this.id)">
+                <h2>Senha Comum</h2>
+            </button>
+        
+
+    </div>
+    <div class="senha">
+            <button  id='btn_preferencial' onclick="solicitar_senha(this.id)">
+                <h2>Senha Preferencial</h2>
+            </button>
+    </div>
+    </div>
+    
+    <h1 class="senha" id="genera_senha"></h1>
+</div>
+
+{{!-- chama js --}}
+

@@ -1,0 +1,306 @@
+
+
+/* condicoes if else */
+
+
+/* ocupodo */
+
+.ocupado {
+
+ background-color: rgb(228, 62, 11);
+ font-weight: bold;
+}
+.disponivel {
+ background-color: rgb(0, 180, 150);
+    font-weight: bold;
+}
+
+
+.status-giche-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+  /* DEVICE style */
+
+.btn-voltar-main{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 123, 180);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 25px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);}
+.btn-voltar-main:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}
+
+  .flex-coll{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.main_device{
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+
+.header_device{
+    background-color: rgb(0, 123, 180);;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    height: 70px;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+.titulo-device-choice{
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+    font-size: 40px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+
+.content-device{
+
+    background-color: rgb(22, 83, 136);
+    
+}
+
+
+.group-box-devices{
+    padding: 10px;
+    margin: 10px;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.box-giche{
+    background-color: rgb(0, 123, 180);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+
+}
+.box-giche:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}	
+.box-device-img{
+    justify-content: center;
+    align-items: center;
+}
+.box-device-img img{
+    width: 250px;
+    height: 200px;
+}
+
+.box-device-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: rgb(0, 123, 180);
+
+}
+
+.btn-fecha-guiche{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(0, 123, 180);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+
+
+
+
+/* mobile */
+@media screen and (max-width: 768px) {
+    .main_device{
+        padding: 0;
+        margin: 0;
+    }
+    .content-device{
+
+        height: 100%;
+    }
+    .group-box-devices{
+        flex-direction: column;
+    }
+    
+    .box-device{
+        width: 100%;
+    }
+}
+
+/*  condicoes de cor por valor do botao if else */
+
+
+/* guiche novo atendimento */
+
+
+
+.header-adm-item-counter{
+    background-color: rgb(0, 123, 180);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+
+}
+
+.text-counter{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.counter-preferencial{
+    background-color: rgb(0, 180, 150);
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+    padding: 5px;
+    
+}
+
+.counter-comum{
+    background-color: rgb(228, 62, 11);
+    border-radius: 5px;
+    font-size: 15px;
+    padding: 5px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+
+.group-ficha-redict{
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    background-color: rgb(0, 123, 180);
+    color: rgb(255, 255, 255);
+    display: none;
+    width: 30%;
+}
+.grupo-actions-giches{
+    padding: 10px;
+    gap: 20px;
+
+
+}
+
+.btn-chama-preferencial-giche{
+    background-color: rgb(0, 180, 150);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.btn-chama-preferencial-giche:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}
+
+.btn-chama-comum-giche{
+    background-color: rgb(228, 62, 11);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 15px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+.btn-chama-comum-giche:hover{
+    background-color: rgb(0, 160, 234);
+    cursor: pointer;
+}
+
+.box-btn-encaminhar-p-sala{
+    background-color: rgb(0, 180, 150);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.box-btn-encaminhar-abortar{
+    background-color: rgb(228, 62, 11);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 20px;
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+}
+
+.valus-ficha-redirect{
+    font-size: 15px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px 0px 5px rgb(0, 0, 0);
+    gap: 10px;
+}

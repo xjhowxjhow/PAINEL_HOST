@@ -1,0 +1,193 @@
+
+<script> 
+var sockets = io();
+sockets.on('show_senha_painel_func_sala', function(data){
+    // verifica se essa sala é o mesmo de data
+    console.log('nova senha encaminhada do guiche para a sala' + data);
+    console.log('tualizar pagina');
+    // getelementbyid('identifi-sala').value
+    var sala = document.getElementById('identifi-sala').getAttribute('value');
+    if (sala == data) {
+        location.reload(true);
+    }
+    else{
+        console.log('sala diferente');
+        console.log('sala atual' + sala);
+        console.log('sala nova' + data);
+    }
+});
+
+</script>
+
+
+
+
+<div id="identifi-sala" value="{{id_sala}}"></div>
+
+{{!-- formulario senha atendiumento  // numero do guiche atual--}}
+
+{{!-- pega id do guiche do params da fucao --}}
+
+<h1> Painel funcionario {{sala.dataValues.nome}} {{sala.dataValues.tipo_sala}}</h1>
+<div class="btn-fecha-guiche flex-coll" id="{{id_sala}}" onclick="fechaSala(this.id)">
+    <p>Fechar Sala</p>
+</div>
+
+
+
+
+{{!-- exclui giche edita sala edita td --}}
+
+
+
+
+
+<div class="main-adm flex-row">
+
+    <div class ="menu-bar-adm flex-coll">
+
+            <div class="menu-bar-adm-item2 flex-coll">
+                <p>Configurações</p>
+            </div>
+
+            <div class="menu-bar-adm-item flex-coll active-adm" id="pag_adm_guiche" onclick="">
+                <a>Atendimento</a>
+            </div>
+            <div class="menu-bar-adm-item flex-coll " id="{{id_sala}}" onclick="redirect_fila_espera_sala(this.id)">
+                <a>Fila de Espera</a>
+            </div>
+
+
+            <div class="menu-bar-adm-item flex-coll">
+                <a href="/adm/relatorios">Configurações Painel</a>
+            </div>
+    </div>
+
+
+
+    <div class="group-content-adm flex-coll">
+        
+        <div class ="header-adm flex-row">
+            <div class="header-adm-item-counter flex-row">
+                <div class="text-counter">
+                    <p>Fila de espera:
+                    </p>
+                </div>
+                <div class="counter-preferencial flex-coll">
+                    <p>Preferencial: {{qtd_senha_pref}} </p>
+                    
+                </div>
+                <div class="counter-comum flex-coll">
+                    <p>Comum:{{qtd_senha_comum}} </p>
+
+                </div>
+            </div>
+        </div>
+        <div class="content-adm flex-coll">
+            {{!-- lsita giches  --}}
+
+            <div class="modal-content-cancel-ficha" id="modal-content-cancel-ficha">
+                <div class="modal-header flex-row">
+                    <h2>Cancelar Senha</h2>
+                    <div class="btn-close-modal-add-guiche flexbotao" id="btn-close-modal-add-guiche" onclick="FechaModalCancelSenhaSala()">
+                        <p class="p-inside-btn">FECHAR</p>
+                    </div>
+                </div>
+                <div class="modal-body flex-row">
+                    {{!-- info new giche --}}
+                    <div class="btn-add-guiche-cancelar flexbotao" id="btn-volta-senha-sala" onclick="CancelarSenhaSalaConfirm(this.id)">
+                        <p class="p-inside-btn">Voltar senha para fila</p>
+                     </div>
+                     <div class="btn-add-guiche-salvar flexbotao"  id ="btn-destroy-senha-sala" onclick="CancelarSenhaSalaConfirm(this.id)">
+                        <p>Destruir Senha</p>
+                     </div>
+                </div>
+                <div class="modal-footer flex-row">
+                     <div class="btn-add-guiche-cancelar flexbotao" id="btn-add-guiche-cancelar" onclick="FechaModalCancelSenhaSala()">
+                        <p class="p-inside-btn">Cancelar</p>
+                     </div>
+
+                </div>
+            </div>
+            
+            <div class="box-title-giches flex-coll">
+                <h1>Novo Atendimento</h1>
+            </div>
+
+            <div class="grupo-actions-giches flex-row">
+
+                <div class="btn-chama-preferencial-sala flex-coll"  value="{{id_sala}}" id="btn-chama-preferencial-sala" onclick="atender_senha_sala(this.id)">
+                    <p>Chamar Prefernecial</p>
+                </div>
+                <div class="btn-chama-comum-sala flex-coll"  value="{{id_sala}}" id="btn-chama-comum-sala" onclick="atender_senha_sala(this.id)">
+                    <p>Chamar Comum</p>
+                </div>
+            </div>
+            
+            {{!-- novo direcionamento para salas ficha func --}}
+            <div class="group-ficha-redict" id="group-ficha-redict">
+                {{!-- combobox com salas --}}
+                <div class="tipo-senha-client-guiche valus-ficha-redirect flex-row">
+                    <p>Tipo:</p>
+                    <p id="value-form-sala-tipo_senha"></p>
+                </div>
+
+                <div class="id-senha-client-guiche valus-ficha-redirect flex-row">
+                    <p>ID:</p>
+                    <p id="id-senha-client-sala"></p>
+                </div>
+                <div class="view-senha-client-guiche valus-ficha-redirect flex-row">
+                    <p>Senha:</p>
+                    <p id="view-senha-client-sala"></p>
+                </div>
+                <div class="hora-created-senha valus-ficha-redirect flex-row">
+                    <p>Horário:</p>
+                    <p id="hora-created-senha-sala"></p>
+                </div>
+
+                <div class="box-combobox-salas flex-coll">
+                    <label for="">Encaminhar para: </label>
+                    <select name="select-salas" id="select-salas">
+                        {{#each salas_acti}}
+                        <option value="{{dataValues.id}}">{{dataValues.nome}} - {{dataValues.tipo_sala}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                {{!-- INPUT NOME DO CLIENTE --}}
+                <div class="box-combobox-type-senha">
+                    <label for="">Encaminhar senha por: </label>
+                    <select name="select-type-senha" id="select-type-senha">
+                        <option value="1">Nome Cliente</option>
+                        <option value="2">Senha guiche</option>
+                    </select>
+                </div>
+
+                <div class="box-input-nome-cliente flex-coll">
+                    <p>Nome Cliente:</p>
+                    <p id="nome-cliente-sala"></p>
+                </div>
+
+                <div class="group-actions-senha-guiche flex-row">
+                    <div class="box-btn-encaminhar-p-sala flex-coll"id="{{id_sala}}" onclick="EncaminharSenhaSalaSala(this.id)">
+                        <p>Encaminhar</p>
+                    </div>
+                    <div class="box-btn-encaminhar-p-sala flex-coll" id = "{{id_sala}}" onclick="FinalizaSenhaSala(this.id)">
+                        <p>Finalizar</p>
+                    </div>
+                    <div class="box-btn-encaminhar-abortar" id="btn-abortar-senha-guiche"  onclick="CancelsenhaSala()">
+                        <p>Abortar</p>
+                    </div>
+
+
+                    <div class="box-btn-encaminhar-abortar" id="btn-rechamar-senha-guiche"  onclick="">
+                        <p>Rechamar</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

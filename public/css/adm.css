@@ -1,0 +1,342 @@
+
+/* COMECO BASE */
+
+.flex-coll{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+}
+
+/* flexbotao organiza texto center */
+.flexbotao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.p-inside-btn{
+    position: absolute;
+
+}
+.main_adm{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.menu-bar-adm{
+    background-color:rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    height: 100vh;
+    width: 250px;
+    z-index: 1;
+    top: 0;
+    border-right: 2px solid rgb(0, 0, 0);
+    
+}
+
+
+.menu-bar-adm-item{
+    padding: 10px;
+    height:50px;
+    background-color: rgb(42, 114, 209);
+    border-bottom: 1px solid rgb(0, 0, 0);
+    cursor: pointer;
+    justify-content: center;
+    
+}
+
+.menu-bar-adm a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+}
+.menu-bar-adm-item:hover{
+    background-color: rgb(0, 35, 51);
+
+}
+
+.active-adm{
+    background-color: rgb(0, 35, 51);
+}
+
+
+.group-content-adm{
+    flex-grow: 1;
+}
+.content-adm {
+    justify-content: center;
+    align-items: center;   
+    margin: 10px;
+    position: relative;
+    gap: 10px;
+}
+.header-adm{
+    background-color: rgb(255, 255, 255);;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    height: 70px;
+    width: 100%;
+    z-index: 1;
+}
+
+/* Modal Header */
+.modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  /* Modal Body */
+  .modal-body {padding: 2px 16px;}
+  
+  /* Modal Footer */
+  .modal-footer {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+
+
+  /* Modal Content */
+  .modal-content {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: none;
+  }
+
+.modal-content-cancel-ficha{
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    display: none;}
+
+  /* botao modal guiche */
+
+  .btn-close-modal-add-guiche{
+    background-color: rgb(0, 123, 180);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    width: 10%;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .btn-add-guiche-cancelar{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 10%;
+    background-color: rgb(228, 62, 11);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+    .btn-add-guiche-cancelar:hover{
+        background-color: rgb(255, 0, 0);
+    }
+  .btn-add-guiche-salvar{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 10%;
+    background-color: rgb(0, 180, 150);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+.btn-add-guiche-salvar:hover{
+        background-color: rgb(0, 255, 0);
+}
+
+.box-inputs-new-giches{
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.box-inputs-new-giches-item{
+    gap: 5px;
+    align-items: center;
+
+}
+
+
+
+  /* Add Animation */
+  @keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+  }
+
+
+
+/* FIM BASE */
+
+
+
+
+
+/* giche */
+
+.box-title-giches{
+
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+/* lista */
+
+.list-giches {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0);
+    border-radius: 5px;
+    flex-grow: 1;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+}
+
+/* colunas */
+.header-titles-giches{
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(0, 123, 180);
+}
+.title-giches{
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border-right: 1px solid rgb(0, 0, 0);
+    width: 100px;
+
+}
+
+.row-list-giches{
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    
+}
+.row-list-giches:hover{
+    background-color: rgb(0, 35, 51);
+    color: rgb(255, 255, 255);
+    transition:none;
+}
+.item-giches{
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border-right: 1px solid rgb(0, 0, 0);
+    width: 100px;
+}
+
+/* botao editar */
+.btn-edit-giches{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 50%;
+    background-color: rgb(0, 180, 150);
+    border-radius: 5px;
+
+    cursor: pointer;
+    
+}
+.btn-edit-giches:hover{
+    background-color: rgb(228, 62, 11);
+    
+}
+.btn-delet-giches{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 50%;
+    background-color: rgb(228, 62, 11);
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+.btn-delet-giches:hover{
+    background-color: rgb(0, 180, 150);
+    
+}
+
+/* grupo btn actions giche */
+
+.grupo-actions-giches{
+    justify-content: flex-start;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: rgb(0, 123, 180);
+    border-bottom: 2px solid rgb(0, 0, 0);
+    border-radius: 5px;
+
+}
+
+.btn-add-new-giche{
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 150px;   
+    background-color: rgb(0, 180, 150);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}   
+.btn-add-new-giche:hover{
+    background-color: rgb(228, 62, 11);
+    color: aliceblue;
+}
+
