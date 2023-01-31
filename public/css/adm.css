@@ -93,6 +93,7 @@
     animation-name: animatetop;
     animation-duration: 0.4s;
     display: none;
+    z-index: 9000000000000000;
   }
 
 .modal-content-cancel-ficha{

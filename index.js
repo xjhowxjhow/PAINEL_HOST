@@ -718,7 +718,9 @@ const io = Socket(Server);                                                      
             if(posts_edit == null){
                 var senha = 1;
             }else{      // passa senha para inteiro e soma mais 1
-                var senha = parseInt(posts_edit.senha) + 1;
+                var senha =  parseInt(posts_edit.senha) + 1;
+                // var senha = senha.toString();
+                // var senha = senha+'P';
             }
             //salva no banco de dados
             Post.create({
@@ -726,8 +728,9 @@ const io = Socket(Server);                                                      
                 status_senha:0,
                 tipo_senha: 'preferencial'
             }).then(function(){
+                console.log('senha preferencial gerada: '+senha);
                 res.send('Sua senha é: ' + senha);
-            }).catch(function(erro){
+            }).catch(function(erro){    
                 res.send("Houve um erro: " + erro);
             });
             
