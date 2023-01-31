@@ -88,6 +88,12 @@
     .box-device{
         width: 100%;
     }
+    *{
+
+        zoom: 0.99;
+    }
 }
+
+
 
 /*  condicoes de cor por valor do botao if else */

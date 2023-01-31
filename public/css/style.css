@@ -3,6 +3,7 @@
     font-family: customfont;
     transition: all 0.3s ease;
     background-color:rgb(224, 229, 236);
+    /* rgb(243, 242, 239) */
     color: #000;
     font-weight: bolder;
     
@@ -245,7 +246,7 @@ body{
 
     background-color: rgb(235, 235, 235);
     gap: 10px;
-    margin: 10px;
+    margin: 10px 0px;
     height: 100vh;
     width: 200px;
 }
@@ -343,3 +344,15 @@ body{
     width: 100%;
   }
 
+
+/* resolução for 1024 até 1366x768 */
+@media screen and (max-width: 1366px) and (min-width: 1024px) {
+    
+*{
+    zoom: 0.99;
+    font-size: 14px;
+}
+.text-online {
+    width: 180px;
+}
+}

@@ -43,6 +43,7 @@
     justify-content: center;
     align-items: center;   
     position: relative;
+    gap: 10px;
 }
 .header-adm{
     background-color: rgb(255, 255, 255);;
@@ -186,20 +187,22 @@
 
 .text-online{
     text-align: center;
-    width: 270px;
+    width: 27   0px;
     margin: 10px;
 }
 
 
 
 .box-title-giches{
-
-    height: 50px;
     width: 100%;
     justify-content: center;
     align-items: flex-start;
 }
-
+.box-title-giches h1{
+    font-size: 27px;
+    font-weight: bold;
+    color: rgb(0, 123, 180);
+}
 /* lista */
 
 .list-giches {
@@ -291,12 +294,10 @@
 .grupo-actions-giches{
     justify-content: flex-start;
     align-items: center;
-    height: 100px;
-    width: 100%;
     border-bottom: 1px solid rgba(85, 83, 83, 0.5);
     box-shadow: 0px 0px 5px rgba(133, 133, 133, 0.534);
-    margin: 10px;
     border-radius: 10px;
+    transform: translateX(-12%);
 }
 
 .btn-add-new-giche{
