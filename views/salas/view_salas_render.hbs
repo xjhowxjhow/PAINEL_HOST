@@ -10,18 +10,18 @@
     </div>
 
     <div class="content-device flex-coll">
-        <div class="sub-menu-view flex-row">
+        <div class="header-select-room flex-row">
+            <div class="btns" onclick="voltar_main_choice_device()">Voltar</div>
             <h1 class="titulo-device-choice">Selecione a Sala</h1>
-            <div class="btn-voltar-main" onclick="voltar_main_choice_device()">Voltar</div>
         </div>
 
         <div class="group-box-devices flex-row">
             {{#each salas}}
-            <div class="box-giche device-adm flex-coll" id="{{dataValues.id}}" onclick="choice_sala(this.id)">
-                <div class="box-device-img flex-coll">
+            <div class="btns device-adm flex-coll" id="{{dataValues.id}}" onclick="choice_sala(this.id)">
+                <div class="btn-img flex-coll">
                     <img src="src/device/2.png" alt="">
                 </div>
-                <div class="box-device-title">
+                <div class="btn-title">
                     <h1>{{dataValues.tipo_sala}}  {{dataValues.nome}}</h1>
                 </div>
                 <div class="box-status-giche flex-coll">
@@ -41,5 +41,5 @@
 
     </div>
 
-    
+        
 </div>

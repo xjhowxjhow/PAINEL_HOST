@@ -178,6 +178,8 @@ function choiceDevice(id_clk){
     // abre input de usuario e senha do navegador
     let login = prompt('Digite o usuario');
     let senha = prompt('Digite a senha');
+
+
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -1069,7 +1071,5 @@ function CancelarSenhaSalaConfirm(id_btn){
         alert('Erro ao cancelar senha');
     }
 }
-
-
 
 

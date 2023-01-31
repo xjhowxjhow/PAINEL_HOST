@@ -7,30 +7,27 @@ sockets.on('att-painel-guiche', function(data){
 }); 
 </script>
 
-<h1> Painel funcionario Gighe {{id}}</h1>
-<div class="btn-fecha-guiche flex-coll" id="{{id}}" onclick="fechaGuiche(this.id)">
-    <p>Fechar guiche</p>
-</div>
-    
+
 
 <div class="main-adm flex-row">
-
-    <div class ="menu-bar-adm flex-coll">
-
-            <div class="menu-bar-adm-item2 flex-coll">
-                <p>Configurações</p>
+    
+        <div class ="menu-bar-adm flex-coll">
+            <div class="btns btn-menu-custom-style flex-coll">
+                <p> Painel funcionario {{nome}} {{desc}}</p>
             </div>
 
-            <div class="menu-bar-adm-item flex-coll" id="{{id}}" onclick="choice_guiche(this.id)">
+            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaGuiche(this.id)">
+                <i class="fa-spacing-right fa fa-times"></i>
+                <a>Fechar guiche</a>
+            </div>
+            
+            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="choice_guiche(this.id)">
+                <i class="fa-spacing-right fa fa-user-headset"></i>
                 <a>Atendimento</a>
             </div>
-            <div class="menu-bar-adm-item flex-coll active-adm" id="{{id}}" onclick="redirect_fila_espera(this.id)">
+            <div class="btns btn-menu-custom-style flex-row active-adm" id="{{id}}" onclick="redirect_fila_espera(this.id)">
+                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
                 <a>Fila de Espera</a>
-            </div>
-
-
-            <div class="menu-bar-adm-item flex-coll">
-                <a href="/adm/relatorios">Configurações Painel</a>
             </div>
     </div>
 
@@ -38,7 +35,6 @@ sockets.on('att-painel-guiche', function(data){
 
     <div class="group-content-adm flex-coll">
         
-        <div class ="header-adm flex-row"></div>
         <div class="content-adm flex-coll">
             {{!-- lsita giches  --}}
 

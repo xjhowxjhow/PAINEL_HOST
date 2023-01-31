@@ -2,8 +2,10 @@
   "name": "panel_host",
   "dependencies": {
     "body-parser": "^1.20.1",
+    "bootstrap": "^5.3.0-alpha1",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
+    "font-awesome": "^4.7.0",
     "mysql2": "^2.3.3",
     "sequelize": "^6.27.0",
     "socket.io": "^4.5.4",

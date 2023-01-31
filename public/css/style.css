@@ -2,6 +2,9 @@
 *{
     font-family: customfont;
     transition: all 0.3s ease;
+    background-color:rgb(224, 229, 236);
+    color: #000;
+    font-weight: bolder;
     
 }
 
@@ -10,7 +13,7 @@
     src: url(/font/SansationLight.ttf);
 }
 body{
-    background-color:rgb(22, 83, 136);
+    
     margin: 0;
     padding: 0;
 }
@@ -156,3 +159,187 @@ body{
     text-align: center;
     
 }
+
+
+.btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;  
+    position: relative;
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,
+     inset 0px 0px 0px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,        
+     inset 0px 0px 0px 0px #0001;
+    transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+     border-radius: 10px;
+    transition: all 0.5s;
+  }
+
+.btns:hover{
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,
+     inset 0px 0px 0px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,        
+     inset 0px 0px 0px 0px #0001;
+    transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+    transform: scale(1.1);
+    transition: all 0.5s;
+    cursor: pointer;
+    background-color: rgb(120, 188, 219);   
+  }
+.btns p, h1{
+    color: rgb(0, 0, 0);
+    font-weight: 700;
+    text-shadow: 0px 0px 5px #fff;
+    background-color: transparent;
+    text-align: center;
+
+}
+
+.btn-img{
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+.btn-img img{
+    background-color: transparent;
+    width: 150px;
+    height: 150px;
+}
+
+.btn-title{
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-size: 10px;
+}
+
+
+.fa-spacing-left {
+    margin-left: 10px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+.fa-spacing-right {
+    margin-right: 10px;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+
+
+
+.menu-bar-adm{
+
+    background-color: rgb(235, 235, 235);
+    gap: 10px;
+    margin: 10px;
+    height: 100vh;
+    width: 200px;
+}
+.menu-bar-adm:hover{
+    transition: all 0.5s;
+}
+
+.btn-menu-custom-style{
+    margin: 0 10px;
+    justify-content: center;
+    align-items: center;
+}
+.btn-menu-custom-style a{
+    background-color: transparent;
+}
+
+
+.form-item{
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(235, 235, 235);
+    margin: 10px;
+    gap: 10px;
+    position: relative;
+    box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,
+     inset 0px 0px 0px 0px #0001,
+     inset 0px 0px 0px 0px #fff9,        
+     inset 0px 0px 0px 0px #0001;
+    transition:box-shadow 0.6s cubic-bezier(.79,.21,.06,.81);
+    border-radius:5px;
+    transition: all 0.5s;
+    text-align: center;
+
+}
+.form-item label{
+    margin: 5px;
+}
+
+.form-item p,label{
+    color: rgb(0, 0, 0);
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    margin-left: 10px;
+}
+
+
+.form-item.box-combobox-salas {
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .form-item.box-combobox-salas label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .form-item.box-combobox-salas select {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    width: 100%;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    text-shadow: 0px 0px 5px #fff;
+    background-color: transparent;
+    width: 100%;
+    text-align: center;
+  }
+  .form-item.box-input-nome-cliente {
+    padding: 3px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .form-item.box-input-nome-cliente label {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .form-item.box-input-nome-cliente input {
+    padding: 0.5rem;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    width: 100%;
+  }
+
