@@ -8,21 +8,29 @@
 <div class="main-adm flex-row">
 
     <div class ="menu-bar-adm flex-coll">
-
-            <div class="menu-bar-adm-item2 flex-coll">
-                <p>Configurações</p>
+            <div class="btns btn-menu-custom-style flex-row">
+                <i class="fa-spacing-right fa fa-user-tie"></i>
+                <p> Painel Administrador</p>
             </div>
-
-            <div class="menu-bar-adm-item flex-coll" id="pag_adm_guiche" onclick="pages_adm(this.id)">
+            <div class="btns btn-menu-custom-style flex-row " onclick="voltar_main_choice_device()">
+                <i class="fa-spacing-right fa fa-arrow-left"></i>
+                <p> Voltar</p>
+            </div>
+            <div class="btns btn-menu-custom-style flex-row" id="pag_adm_guiche" onclick="pages_adm(this.id)">
+                <i class="fa-spacing-right fa fa-user-headset"></i>
                 <a>Giches</a>
             </div>
-
-            <div class="menu-bar-adm-item flex-coll active-adm" id="pag_adm_salas" onclick="pages_adm(this.id)">
+            <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_salas" onclick="pages_adm(this.id)">
+                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
                 <a>Salas</a>
             </div>
-
-            <div class="menu-bar-adm-item flex-coll">
-                <a href="/adm/relatorios">Configurações Painel</a>
+            <div class="btns btn-menu-custom-style flex-row">
+                <i class="fa-spacing-right fa-solid fa-gear"></i>
+                <p>Configurações</p>
+            </div>
+            <div class="btns btn-menu-custom-style flex-row">
+                <i class="fa-spacing-right fa-duotone fa-display"></i>
+                <a>Configurações Painel</a>
             </div>
     </div>
 
@@ -30,7 +38,6 @@
 
     <div class="group-content-adm flex-coll">
         
-        <div class ="header-adm flex-row"></div>
         <div class="content-adm flex-coll">
             {{!-- lsita sala  --}}
 
@@ -68,8 +75,9 @@
                 <h1>Salas Cadastradas</h1>
             </div>
 
-            <div class="grupo-actions-giches flex-row">
-                <div class="btn-add-new-giche flex-coll" id="btn-add-new-giche">
+            <div class=" flex-row">
+                <div class="btns btn-menu-custom-style flex-row"  id="btn-add-new-giche">
+                    <i class="fa-spacing-right fa-solid fa-plus"></i>
                     <p>Adicionar Sala</p>
                 </div>
             </div>
@@ -104,12 +112,14 @@
                             <p>{{dataValues.status_sala}}</p>
                         </div>
                         <div class="item-giches flex-coll">
-                            <div class="btn-edit-giches flex-coll">
+                            <div class="btns btn-menu-custom-style edit-tbn-table flex-row">
+                                <i class="fa-spacing-right fa-solid fa-edit"></i>
                                 <p>Editar</p>
                             </div>
                         </div>
                         <div class="item-giches flex-row">
-                            <div class="btn-delet-giches flex-coll" id="{{dataValues.id}}" onclick="delete_sala_list(this.id)">
+                            <div class="btns btn-menu-custom-style remove-tbn-table flex-row " id="{{dataValues.id}}" onclick="delete_sala_list(this.id)">
+                                <i class="fa-spacing-right fa-solid fa-trash"></i>
                                 <p>Excluir</p>
                             </div>
                         </div>

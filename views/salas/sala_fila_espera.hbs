@@ -17,38 +17,36 @@ sockets.on('show_senha_painel_func_sala', function(data){
 
 
 
-<h1> Painel funcionario Sala {{sala.dataValues.tipo_sala}}</h1>
-<div class="btn-fecha-guiche flex-coll" id="{{id}}" onclick="fechaGuiche(this.id)">
-    <p>Fechar guiche</p>
-</div>
+
+
     
 
 <div class="main-adm flex-row">
 
-    <div class ="menu-bar-adm flex-coll">
 
-            <div class="menu-bar-adm-item2 flex-coll">
-                <p>Configurações</p>
+
+        <div class ="menu-bar-adm flex-coll">
+            <div class="btns btn-menu-custom-style flex-coll">
+                <p> Painel funcionario Sala {{sala.dataValues.tipo_sala}}</p>
             </div>
 
-            <div class="menu-bar-adm-item flex-coll" id="{{id}}" onclick="choice_sala(this.id)">
+            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaGuiche(this.id)">
+                <i class="fa-spacing-right fa fa-times"></i>
+                <a>Fechar Sala</a>
+            </div>
+            
+            <div class="btns btn-menu-custom-style flex-row"id="{{id}}" onclick="choice_sala(this.id)">
+                <i class="fa-spacing-right fa fa-user-headset"></i>
                 <a>Atendimento</a>
             </div>
-            <div class="menu-bar-adm-item flex-coll active-adm" id="{{id}}" onclick="redirect_fila_espera_sala(this.id)">
+            <div class="btns btn-menu-custom-style flex-row active-adm" id="{{id}}" onclick="redirect_fila_espera(this.id)">
+                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
                 <a>Fila de Espera</a>
             </div>
-
-
-            <div class="menu-bar-adm-item flex-coll">
-                <a href="/adm/relatorios">Configurações Painel</a>
-            </div>
-    </div>
-
-
+        </div>
 
     <div class="group-content-adm flex-coll">
         
-        <div class ="header-adm flex-row"></div>
         <div class="content-adm flex-coll">
             {{!-- lsita giches  --}}
 

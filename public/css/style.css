@@ -345,6 +345,54 @@ body{
   }
 
 
+
+
+/* table global */
+
+.edit-tbn-table{
+    width: 100px;
+    margin: 0 auto;
+    height: 35px;
+    padding: 0;
+    z-index: 0;
+}
+
+.remove-tbn-table{
+    width: 100px;
+    height: 35px;
+    margin: 0 auto;
+    padding: 0;
+    z-index: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* resolução for 1024 até 1366x768 */
 @media screen and (max-width: 1366px) and (min-width: 1024px) {
     
