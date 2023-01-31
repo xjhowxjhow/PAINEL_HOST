@@ -27,10 +27,10 @@ sockets.on('show_senha_painel_func_sala', function(data){
 
         <div class ="menu-bar-adm flex-coll">
             <div class="btns btn-menu-custom-style flex-coll">
-                <p> Painel funcionario Sala {{sala.dataValues.tipo_sala}}</p>
+                <p> Painel funcionario {{sala.dataValues.nome}} {{sala.dataValues.tipo_sala}}</p>
             </div>
 
-            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaGuiche(this.id)">
+            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaSala(this.id)">
                 <i class="fa-spacing-right fa fa-times"></i>
                 <a>Fechar Sala</a>
             </div>
@@ -39,7 +39,7 @@ sockets.on('show_senha_painel_func_sala', function(data){
                 <i class="fa-spacing-right fa fa-user-headset"></i>
                 <a>Atendimento</a>
             </div>
-            <div class="btns btn-menu-custom-style flex-row active-adm" id="{{id}}" onclick="redirect_fila_espera(this.id)">
+            <div class="btns btn-menu-custom-style flex-row active-adm" id="{{id}}" onclick="redirect_fila_espera_salas(this.id)">
                 <i class="fa-spacing-right fa-solid fa-table-rows"></i>
                 <a>Fila de Espera</a>
             </div>

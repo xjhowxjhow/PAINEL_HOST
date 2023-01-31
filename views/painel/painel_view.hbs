@@ -1,25 +1,36 @@
-<script> 
+<script>
+    function loadContent(url) {
+        let contentDiv = document.getElementById('contentdevice');
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                contentDiv.innerHTML = this.responseText;
+            }
+        };
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
     var sockets = io();
-    sockets.on('show_senha_painel_recepcao', function(data){
-    console.log('nova senha chamada atualizar pagina');
-    var audio = new Audio('/src/assets/sounds/bip.mp3');
-    audio.play();
-    location.reload(true);
-    
-}); 
+    sockets.on('show_senha_painel_recepcao', function (data) {
+        console.log('nova senha chamada atualizar pagina');
+        var audio = new Audio('/src/assets/sounds/bip.mp3');
+        audio.play();
+        loadContent('/painel_view');
+                // pisca o texto da senha chamada elemneto titulo_senha_act
+    }); 
 </script>
 
 <div class="main flex-row">
-    
+
     <div class="left-content flex-coll">
         <div class="logo-top">
             <h1> Painel senhas</h1>
         </div>
-        
+
         <div class="painel_senha_act flex-coll">
-            <h1 class="titulo_senha_act"> SENHA CHAMADA:  {{ultimas_guiche.0.dataValues.senha}}</h1>
+            <h1 class="titulo_senha_act"> SENHA CHAMADA: {{ultimas_guiche.0.dataValues.senha}}</h1>
             <h1 class="tipo_senha_act"> TIPO DE SENHA: {{ultimas_guiche.0.dataValues.tipo_senha}}</h1>
-            <h1 class="text-big-guiche"> Dirija-se ao  {{guiche}}</h1>
+            <h1 class="text-big-guiche"> Dirija-se ao {{guiche}}</h1>
         </div>
 
         <div class="bottom-content">
@@ -33,19 +44,15 @@
         </div>
         <div class="group_senhas flex-coll">
             {{#each ultimas_guiche}}
-                <div class="ultimas_senhas flex-coll">
+            <div class="ultimas_senhas flex-coll">
 
-                    <h1 class="painel_s_tipo">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
-                    <h1 class="painel_s_senha"> SENHA: {{dataValues.senha}} </h1>
-                    <small class="painel_s_senha">{{dataValues.createdAt}}</small>
-                    <hr>
-                </div>
+                <h1 class="painel_s_tipo">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
+                <h1 class="painel_s_senha"> SENHA: {{dataValues.senha}} </h1>
+                <small class="painel_s_senha">{{dataValues.createdAt}}</small>
+                <hr>
+            </div>
             {{/each}}
         </div>
 
     </div>
 </div>
-
-
-
-

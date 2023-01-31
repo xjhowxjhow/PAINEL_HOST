@@ -1,7 +1,5 @@
 
 
-
-
 //funcao documentgetelementbyid
 const host_ip = window.location.hostname+':3000';
 var status_guiche = false;
@@ -16,6 +14,7 @@ socket.emit('connection', 'guiche conectado');
 socket.on('message', function(data){
     console.log(data);
 });
+
 
 
 
