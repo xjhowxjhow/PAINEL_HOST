@@ -55,6 +55,7 @@
 
 /* Modal Header */
 .modal-header {
+    border-radius: 10px 10px 0 0;
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
@@ -64,10 +65,15 @@
   }
   
   /* Modal Body */
-  .modal-body {padding: 2px 16px;}
+  .modal-body {
+    padding: 12px 16px;
+    gap: 20px;
+    
+}
   
   /* Modal Footer */
   .modal-footer {
+    border-radius: 0 0 10px 10px;
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
@@ -93,13 +99,14 @@
     animation-name: animatetop;
     animation-duration: 0.4s;
     display: none;
-    z-index: 9000000000000000;
+    z-index: 540;
   }
 
 .modal-content-cancel-ficha{
     position: absolute;
-    left: 50%;
-    top: 70%;
+    border-radius: 10px;
+    left: 45%;
+    top: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     background-color: #fefefe;
@@ -110,7 +117,10 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s;
-    display: none;}
+    display: none;
+    z-index: 540;
+
+}
 
   /* botao modal guiche */
 

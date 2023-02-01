@@ -30,14 +30,10 @@ body{
 
 .left-content{
     width: 50%;
-    padding: 0 20px;
-    background-color: rgb(0, 123, 180);
-
 }
 
 .right-content{
     width: 50%;
-    background-color: rgb(0, 123, 180);
     position: relative;
     height: 100vh;
 }
@@ -57,11 +53,10 @@ body{
 
 .painel_senha_act{
     width: 100%;
-    background-color: rgb(0, 160, 234);
     height: 100%;
     justify-content: center;
     align-items: center;
-    background-color: cyan;
+
 }
 .titulo_senha_act{
     color: rgb(0, 0, 0);
@@ -85,7 +80,6 @@ body{
 }
 .bottom-content{
     width: 100%;
-    background-color: rgb(13, 54, 141);
     padding: 20px 0;
     font-size: 10px;
     color: #fff;
@@ -109,20 +103,13 @@ body{
     transform: translate(5%, 0);
     justify-content: center;
     align-items: center;
-    background-color: rgb(120, 219, 197);
     border-radius: 10px;
     border: 2px solid rgb(63, 60, 60);
     
     
     
 }
-.ultimas_senhas h1{
-    color: rgb(0, 0, 0);
-    font-size: 40px;
-    margin-bottom: 20px;
-    
-    
-}
+
 
 .ultimas_senhas:hover{
     background-color: rgb(120, 188, 219);
@@ -131,18 +118,9 @@ body{
 }
 
 .painel_s_tipo{
-    border: 1px solid rgb(63, 60, 60);
-    border-radius: 10px;
-    background-color: rgb(120, 219, 197);
-    width: 90%;
     padding: 10px; 
-
-
 }
 .painel_s_senha{
-    border: 1px solid rgb(63, 60, 60);
-    border-radius: 10px;
-    background-color: rgb(120, 219, 197);
     width: 90%;
     padding: 10px; 
 
@@ -227,6 +205,22 @@ body{
 }
 
 
+.tools-btns-size{
+    width: 60px;
+    height: 6px;
+    margin: 10px;
+}
+
+.no-shadow-btn{
+    box-shadow: none;
+    transition: all 0.5s;
+}
+
+.fa-trasnparent {
+    background-color: transparent;
+    font-size: 20px;
+}
+
 .fa-spacing-left {
     margin-left: 10px;
     background-color: transparent;
@@ -240,7 +234,18 @@ body{
 }
 
 
+.bolder{
+    font-weight: 900;
+    font-size:90px;
+    font-style: italic; 
+}
 
+.txt-bolder{
+    font-weight:bolder;
+    font-size:70px;
+   
+    
+}
 
 .menu-bar-adm{
 

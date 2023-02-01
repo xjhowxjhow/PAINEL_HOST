@@ -30,7 +30,7 @@
         <div class="painel_senha_act flex-coll">
             <h1 class="smal-senha-painel"> TIPO DE SENHA: {{ultimas_guiche.0.dataValues.tipo_senha}}</h1>
             <div class="senha_painel_cfg ">
-                <h1 class="titulo_senha_act"> SENHA CHAMADA: </h1>
+                <h1 class="titulo_senha_act bolder"> SENHA CHAMADA: </h1>
                 <h1 class="big-senha-painel"> {{ultimas_guiche.0.dataValues.senha}} </h1>
             </div>
             <h1 class="medium-senha-painel"> {{guiche}}</h1>
@@ -48,9 +48,8 @@
         <div class="group_senhas flex-coll">
             {{#each ultimas_guiche}}
             <div class="ultimas_senhas flex-coll">
-
-                <h1 class="painel_s_tipo ">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
-                <h1 class="painel_s_senha "> SENHA: {{dataValues.senha}} </h1>
+                <h1 class="painel_s_tipo  ">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
+                <h1 class="painel_s_senha txt-bolder"> SENHA: {{dataValues.senha}} </h1>
                 <small class="painel_s_senha ">{{dataValues.createdAt}}</small>
                 <hr>
             </div>
