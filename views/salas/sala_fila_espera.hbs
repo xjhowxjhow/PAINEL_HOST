@@ -95,12 +95,6 @@ sockets.on('show_senha_painel_func_sala', function(data){
                     <div class="title-giches flex-coll">
                         <p>Nome</p>
                     </div>
-                    <div class="title-giches flex-coll">
-                        <p>Editar</p>
-                    </div>
-                    <div class="title-giches flex-row">
-                        <p>Excluir</p>
-                    </div>
                 </div>
                 {{#each posts}}
                 <div class="row-list-giches flex-row">           
@@ -112,16 +106,6 @@ sockets.on('show_senha_painel_func_sala', function(data){
                         </div>
                         <div class="item-giches flex-coll">
                             <p>{{dataValues.nome_paciente}}</p>
-                        </div>
-                        <div class="item-giches flex-coll">
-                            <div class="btn-edit-giches flex-coll">
-                                <p>Editar</p>
-                            </div>
-                        </div>
-                        <div class="item-giches flex-row">
-                            <div class="btn-delet-giches flex-coll" id="{{dataValues.id}}" onclick="">
-                                <p>Excluir</p>
-                            </div>
                         </div>
                 </div>
                 {{/each}}

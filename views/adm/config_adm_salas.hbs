@@ -41,13 +41,16 @@
         <div class="content-adm flex-coll">
             {{!-- lsita sala  --}}
 
-            <div class="modal-content" id="modal-giche">
+            <div class="modal-content-cancel-ficha" id="modal-giche">
+
+
                 <div class="modal-header flex-row">
-                    <h2>Nova Sala</h2>
-                    <div class="btn-close-modal-add-guiche flexbotao" id="btn-close-modal-add-guiche">
-                        <p class="p-inside-btn">FECHAR</p>
+                    <h2 class="fa-trasnparent">Nova Sala</h2>
+                    <div class="btns flexbotao no-shadow-btn" id="btn-close-modal-add-guiche">
+                        <i class="fa-trasnparent  fa-solid fa-times"></i>
                     </div>
                 </div>
+
                 <div class="modal-body">
                     {{!-- info new sala --}}
                     <div class="box-inputs-new-giches flex-row">
@@ -62,10 +65,10 @@
                     </div>
                 </div>
                 <div class="modal-footer flex-row">
-                     <div class="btn-add-guiche-cancelar flexbotao" id="btn-add-sala-cancelar">
-                        <p class="p-inside-btn">Cancelar</p>
+                     <div class="btns flexbotao no-shadow-btn tools-btns-size" id="btn-add-sala-cancelar">
+                        <p>Cancelar</p>
                      </div>
-                     <div class="btn-add-guiche-salvar flexbotao" id="vtnsalvarsala" onclick="add_new_sala()">
+                     <div class="btns flexbotao no-shadow-btn tools-btns-size" id="vtnsalvarsala" onclick="add_new_sala()">
                         <p>Salvar</p>
                      </div>
                 </div>

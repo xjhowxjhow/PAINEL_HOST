@@ -16,38 +16,31 @@
         // emite um som para avisar que a senha foi chamada
         var audio = new Audio('/src/device/bip.mp3');
         audio.play();
-        // atualiza a
         loadContent('/painel_salas');
-        // pisca o texto da senha chamada elemneto titulo_senha_act
-    }); 
-
-    // pisca o texto da senha chamada elemneto titulo_senha_act
-
+    });
 </script>
 
 
 <div class="main flex-row">
-
     <div class="left-content flex-coll">
-
         <div class="logo-top">
             <h1> Painel senhas</h1>
         </div>
 
         <div class="painel_senha_act flex-coll">
 
-            <h1 class="smal-senha-painel"> TIPO DE SENHA: {{ultimas_salas.0.dataValues.tipo_senha}}</h1>
+            <h1 class="smal-senha-painel"> TIPO: {{ultimas_salas.0.dataValues.tipo_senha}}</h1>
             {{#ifCond posts '==' 10}}
-                <h1 class="titulo_senha_act bolder"> SENHA CHAMADA: {{ultimas_salas.0.dataValues.senha}}</h1>
+            <h1 class="titulo_senha_act bolder"> SENHA : {{ultimas_salas.0.dataValues.senha}}</h1>
             {{else}}
-                {{#ifCond posts.dataValues.chamar_por '==' 'Nome Cliente'}}
-                    <h1 class="medium-senha-painel"> {{posts.dataValues.nome_paciente}}</h1>
-                {{else}}
-                    <h1 class="big-senha-painel">{{posts.dataValues.senha}}</h1>
-                {{/ifCond}}
+            {{#ifCond posts.dataValues.chamar_por '==' 'Nome Cliente'}}
+            <h1 class="medium-senha-painel"> {{posts.dataValues.nome_paciente}}</h1>
+            {{else}}
+            <h1 class="big-senha-painel">{{posts.dataValues.senha}}</h1>
             {{/ifCond}}
-
-            <h1 class="medium-senha-painel"> Dirija-se a {{ultimas_salas.0.dataValues.nome}}
+            {{/ifCond}}
+            <h1>Dirija-se a </h1>
+            <h1 class="medium-senha-painel">{{ultimas_salas.0.dataValues.nome}}
                 {{ultimas_salas.0.dataValues.sala}} </h1>
         </div>
 
@@ -64,8 +57,9 @@
             {{#each ultimas_salas}}
             <div class="ultimas_senhas flex-coll">
 
-                <h1 class="painel_s_tipo">TIPO SENHA: {{dataValues.tipo_senha}}</h1>
-                <h1 class="painel_s_senha txt-bolder"> SENHA: {{dataValues.senha}} {{dataValues.sala}} {{dataValues.nome}} </h1>
+                <h1 class="painel_s_tipo">TIPO: {{dataValues.tipo_senha}}</h1>
+                <h1 class="painel_s_senha txt-bolder"> SENHA: {{dataValues.senha}} {{dataValues.sala}}
+                    {{dataValues.nome}} </h1>
                 <small class="painel_s_senha">{{dataValues.createdAt}}</small>
                 <hr>
             </div>
