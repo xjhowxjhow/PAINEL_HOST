@@ -44,7 +44,13 @@ function voltar_main_choice_device(){
     return loadContent(url);
 }
 
+function RechamaGuiche(){
+    socket.emit('rechamar_guiche', 'rechamar_guiche');
+}
 
+function RechamaSala(){
+    socket.emit('rechamar_sala', 'rechamar_sala');
+}
 
 
 

@@ -15,6 +15,25 @@ const UltimasGuiche = db.sequelize.define('ultimas_guiches', { // cria um modelo
 });
 
 
-UltimasGuiche.sync({force: true}); // cria a tabela postagens no banco de dados # force: true = apaga a tabela se ela já existir e a cria novamente
+
+const path = require('path');
+const fs = require('fs');
+
+const patch = process.cwd();
+const dbPath = path.join(patch, 'database.sqlite');
+console.log(patch);
+console.log(dbPath);
+
+// verifica se ja existe o banco de dados
+
+if (fs.existsSync(dbPath)) {
+        console.log('Database exists, skipping init.');
+} else {
+        console.log('Database does not exist, creating...');
+        UltimasGuiche.sync({force: true}); //
+        
+}
+        
+
 
 module.exports = UltimasGuiche; // exporta o módulo

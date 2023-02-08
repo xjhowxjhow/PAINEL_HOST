@@ -24,6 +24,24 @@ const Giches = db.sequelize.define('giches', { // cria um modelo de tabela no ba
 //funcao para fechar o guiche
 
 
+const path = require('path');
+const fs = require('fs');
+
+const patch = process.cwd();
+const dbPath = path.join(patch, 'database.sqlite');
+console.log(patch);
+console.log(dbPath);
+
+// verifica se ja existe o banco de dados
+
+if (fs.existsSync(dbPath)) {
+        console.log('Database exists, skipping init.');
+} else {
+        console.log('Database does not exist, creating...');
+        Giches.sync({force: true}); //
+        
+}
+        
 
 
 // verifica se a tabela postagens já existe no banco de dados

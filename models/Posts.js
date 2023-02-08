@@ -1,4 +1,5 @@
 
+
 const db = require('./db'); // importa o módulo db.js
 
 const Post = db.sequelize.define('painel_hosts', { // cria um modelo de tabela no banco de dados # postagens = nome da tabela
@@ -39,6 +40,25 @@ const Post = db.sequelize.define('painel_hosts', { // cria um modelo de tabela n
 });
 
 
-Post.sync({force: true}); // cria a tabela postagens no banco de dados # force: true = apaga a tabela se ela já existir e a cria novamente
+const path = require('path');
+const fs = require('fs');
+
+const patch = process.cwd();
+const dbPath = path.join(patch, 'database.sqlite');
+console.log(patch);
+console.log(dbPath);
+
+// verifica se ja existe o banco de dados
+
+if (fs.existsSync(dbPath)) {
+        console.log('Database exists, skipping init.');
+} else {
+        console.log('Database does not exist, creating...');
+        Post.sync({force: true}); //
+        
+}
+        
+
+
 
 module.exports = Post; // exporta o módulo

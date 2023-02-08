@@ -18,6 +18,13 @@
         loadContent('/painel_view');
 
     }); 
+
+    sockets.on('rechamar_senha_guiche', function (data) {
+        console.log('rechamar senha guiche');
+        var audio = new Audio('/src/assets/sounds/bip.mp3');
+        audio.play();
+        loadContent('/painel_view');
+    });
 </script>
 
 <div class="main flex-row">

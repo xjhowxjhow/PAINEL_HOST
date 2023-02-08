@@ -179,7 +179,7 @@ sockets.on('show_senha_painel_func_sala', function(data){
                     <p id="nome-cliente-sala"></p>
                 </div>
 
-                <div class="form-item group-actions-senha-guiche flex-row">
+                <div class="form-item group-actions-senha-sala flex-row">
                     <div class="btns flex-row"id="{{id_sala}}" onclick="EncaminharSenhaSalaSala(this.id)">
                         <i class="fa-spacing-left fa-solid fa-arrow-right"></i>
                         <p>Encaminhar</p>
@@ -188,9 +188,15 @@ sockets.on('show_senha_painel_func_sala', function(data){
                         <i class="fa-spacing-left fa-solid fa-check"></i>
                         <p>Finalizar</p>
                     </div>
+
                     <div class="btns flex-row" id="btn-abortar-senha-guiche"  onclick="CancelsenhaSala()">
                         <i class="fa-spacing-left fa-solid fa-times"></i>
                         <p>Abortar</p>
+                    </div>
+
+                    <div class="btns flex-row" style="width: 80px; font-size:12px;" id="btn-abortar-senha-guiche"  onclick="RechamaSala()">
+                        <i class="fa-spacing-left fa-solid fa-rotate-right"></i>
+                        <p>Rechamar</p>
                     </div>
 
 

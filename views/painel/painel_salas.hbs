@@ -18,6 +18,14 @@
         audio.play();
         loadContent('/painel_salas');
     });
+
+    sockets.on('rechamar_senha_sala', function (data) {
+        console.log('rechamar senha sala');
+        // emite um som para avisar que a senha foi chamada
+        var audio = new Audio('/src/device/bip.mp3');
+        audio.play();
+        loadContent('/painel_salas');
+    });
 </script>
 
 

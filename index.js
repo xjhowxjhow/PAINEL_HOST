@@ -822,6 +822,17 @@ const io = Socket(Server);                                                      
             console.log(data);
         });
 
+        socket.on('rechamar_guiche', function (data) { // atualiza o painel dos funcionarios das salas de acordo com a sala
+            console.log('rechamar senha guiche: '+ data)
+            io.emit('rechamar_senha_guiche', data);
+        });
+
+        socket.on('rechamar_sala', function (data) { // atualiza o painel dos funcionarios das salas de acordo com a sala
+            console.log('rechamar senha sala: '+ data)
+            io.emit('rechamar_senha_sala', data);
+
+        });
+
     });
 
 
