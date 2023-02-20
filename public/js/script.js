@@ -1,7 +1,7 @@
 
 
 //funcao documentgetelementbyid
-const host_ip = window.location.hostname+':3000';
+const  host_ip = window.location.hostname+':3000';
 var status_guiche = false;
 var status_sala = false;
 
@@ -224,6 +224,21 @@ function loadContent(url) {
   xhr.open("GET", url, true);
   xhr.send();
 }
+function resetar_all_senha() {
+    url = 'http://'+host_ip+'/reset_senhas';
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send();
+    let response = xhttp.responseText;
+    if (response != 'error'){
+        alert('Senha resetada com sucesso');
+    }
+    else{
+        alert('Erro ao resetar senha');
+    }
+
+}
 
 //tela de login feycj
 // function choiceDevice(id_clk){
@@ -343,7 +358,7 @@ function pages_adm(id_clk){
 
     let url_guiche= 'http://'+host_ip+'/config_adm';
     let url_salas = 'http://'+host_ip+'/config_adm_salas';
-
+    let url_painel = 'http://'+host_ip+'/config_adm_painel';
     if (id_clk == 'pag_adm_guiche'){
         console.log('adm');
         let href = url_guiche;
@@ -354,6 +369,11 @@ function pages_adm(id_clk){
         let href = url_salas;
         window.location.href = href;
         }
+    
+    if (id_clk =='pag_adm_painel'){
+        let href = url_painel;
+        window.location.href = href;
+    }
 }
 
 // ´Painel adm

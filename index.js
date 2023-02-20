@@ -5,6 +5,30 @@
 // 2 = senha em espera sala (mostar no painel)
 // 3 = senha em atendimento sala
 // 4 = finalizada
+const moment = require('moment');
+const { Op } = require('sequelize');
+
+function localTime(){
+    
+return  moment().format('HH:mm:ss');
+}
+
+
+
+setInterval(function(){
+    //console.log(localTime());
+    if (localTime() == '00:00:00') {
+        console.log('hora de zerar');
+        // deleta toddas as senhas que estejam com status 4
+        Post.destroy({
+            where: {
+                status_senha: 4
+            }
+        });
+
+    }
+}, 1000);
+
 
 
 
@@ -25,6 +49,8 @@ const Adm = require('./models/adm');
 
 // socket.io 
 const Socket = require('socket.io');                                            // importa o módulo socket.io
+const { truncate } = require('fs');
+const { where } = require('sequelize');
 const Server = require('http').Server(app);                                     // cria um servidor HTTP usando o objeto app como middleware
 const io = Socket(Server);                                                      // Inicie o Socket.io usando o servidor HTTP criado acima
 
@@ -113,6 +139,14 @@ const io = Socket(Server);                                                      
             res.render('adm/config_adm_salas', {salas_actives: salas_actives});	// renderiza a pagina config_adm.handlebars
         });
     });
+
+    app.get('/config_adm_painel', function(req,res){
+        res.render('adm/config_adm_painel');	// renderiza a pagina config_adm.handlebars
+    });
+
+
+
+
 
     // cria novo guiche
     app.post('/add_new_guiche', function(req,res){
@@ -712,8 +746,12 @@ const io = Socket(Server);                                                      
 
     app.post('/request_senha_preferencial',function(req,res){
         //senha
-        // verifica a ultima senha gerada e soma mais 1
-        Post.findOne({order: [['createdat','DESC']] }).then(function(posts_edit){
+
+        current_date = new Date();
+        format = moment(current_date).format('YYYY-MM-DD');
+        // select * from painel_hosts where createdAt  like '%2023-02-18%'
+        console.log('data atual: '+format);
+        Post.findOne({order: [['createdat','DESC']] ,where: {createdat: {[Op.like]: '%'+format+'%'}}}).then(function(posts_edit){
             //verfica se tem senha
             if(posts_edit == null){
                 var senha = 1;
@@ -743,11 +781,17 @@ const io = Socket(Server);                                                      
 
     app.post('/request_senha_comum',function(req,res){
         //senha
-        Post.findOne({order: [['createdat','DESC']] }).then(function(posts_edit){
+
+        current_date = new Date();
+        format = moment(current_date).format('YYYY-MM-DD');
+        // select * from painel_hosts where createdAt  like '%2023-02-18%'
+        console.log('data atual: '+format);
+        Post.findOne({order: [['createdat','DESC']] ,where: {createdat: {[Op.like]: '%'+format+'%'}}}).then(function(posts_edit){
             //verfica se tem senha
             if(posts_edit == null){
                 var senha = 1;
             }else{      // passa senha para inteiro e soma mais 1
+                console.log('ultima senha gerada: '+posts_edit.senha);
                 var senha = parseInt(posts_edit.senha) + 1;
             }
             //salva no banco de dados
@@ -836,7 +880,19 @@ const io = Socket(Server);                                                      
     });
 
 
-    
+
+    app.post('/reset_senhas', function(req,res){
+        //recebe dados via requisao do javascript e salva no banco de dados
+        console.log('reset senhas');
+        Post.destroy({truncate : true, cascade: false} ).then(function(){
+        //destroy sqlite_sequence
+            res.send('ok');
+        }).catch(function(erro){
+            res.send('error');
+        });
+        
+    });
+
 
 
 

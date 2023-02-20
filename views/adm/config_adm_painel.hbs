@@ -1,0 +1,95 @@
+
+{{!-- exclui giche edita sala edita td --}}
+
+
+
+
+
+<div class="main-adm flex-row">
+
+    <div class ="menu-bar-adm flex-coll">
+            <div class="btns btn-menu-custom-style flex-row">
+                <i class="fa-spacing-right fa fa-user-tie"></i>
+                <p> Painel Administrador</p>
+            </div>
+            <div class="btns btn-menu-custom-style flex-row " onclick="voltar_main_choice_device()">
+                <i class="fa-spacing-right fa fa-arrow-left"></i>
+                <p> Voltar</p>
+            </div>
+
+            <div class="btns btn-menu-custom-style flex-row" id="pag_adm_guiche" onclick="pages_adm(this.id)">
+                <i class="fa-spacing-right fa fa-user-headset"></i>
+                <a>Giches</a>
+            </div>
+
+            <div class="btns btn-menu-custom-style flex-row " id="pag_adm_salas" onclick="pages_adm(this.id)">
+                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
+                <a>Salas</a>
+            </div>
+            <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_painel" onclick="pages_adm(this.id)">
+                <i class="fa-spacing-right fa-duotone fa-display"></i>
+                <a>Configurações Painel</a>
+            </div>
+            
+            <div class="btns btn-menu-custom-style flex-row">
+                <i class="fa-spacing-right fa-solid fa-gear"></i>
+                <p>Configurações</p>
+            </div>
+
+    </div>
+
+
+
+    <div class="group-content-adm flex-coll">
+        
+        <div class="content-adm flex-coll">
+            {{!-- lsita giches  --}}
+
+            <div class="modal-content-cancel-ficha" id="modal-giche">
+
+                <div class="modal-header flex-row">
+                    <h2 class="fa-trasnparent">Novo Giche</h2>
+                    <div class="btns flexbotao no-shadow-btn" id="btn-close-modal-add-guiche">
+                        <i class="fa-trasnparent  fa-solid fa-times"></i>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    {{!-- info new giche --}}
+                    <div class="box-inputs-new-giches flex-row">
+                        <div class="box-inputs-new-giches-item flex-coll">
+                            <label >Nome</label>
+                            <input class="  " type="text" name="nome_guiche_new" id="nome-guiche-new">
+                        </div>
+                        <div class=" box-inputs-new-giches-item flex-coll">
+                            <label>Descrição</label>
+                            <input type="text" name="desc_guiche_new" id="desc-guiche-new">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer flex-row">
+                     <div class="btns flexbotao no-shadow-btn tools-btns-size" id="btn-add-guiche-cancelar">
+                        <p>Cancelar</p>
+                     </div>
+                     <div class="btns flexbotao no-shadow-btn tools-btns-size" id="btn-add-guiche-salvar">
+                        <p>Salvar</p>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="box-title-giches flex-coll">
+                <h1>Configurações Painel</h1>
+            </div>
+
+            {{!--  --}}
+            <div class="box-giches flex-coll">
+        <div class="container-all flex-row">
+            <i class="fa-spacing-left fa-solid fa-rotate-right"></i>
+            <div class="btns" id='btn_comum' onclick="resetar_all_senha()">
+                <p>Resetar Todas as senhas</p>
+            </div>
+        </div>
+            </div>
+    
+
+</div>
