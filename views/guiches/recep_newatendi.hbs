@@ -1,20 +1,35 @@
-
-<script> 
-var sockets = io();
-sockets.on('att-painel-guiche', function(data){
-    console.log('Nova senha emitida atualizar pagina');
-    location.reload(true);
-    // mudar dps apenas para atualizar o numeros de senha em espera 
-}); 
-
+<script>
+    var host_ip2 = window.location.hostname + ':3000';
+    var sockets = io();
+    sockets.on('att-painel-guiche', function (data) {
+        console.log('Nova senha emitida atualizar pagina');
+        let xhttp = new XMLHttpRequest();
+        let url = 'http://' + host_ip2 + '/qtd_senhas_guiche';
+        xhttp.open('POST', url, true);
+        xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let response = JSON.parse(this.responseText);
+                console.log('resposta');
+                console.log(response);
+                // use response[0] PREFERENCIAL e response[1] COMUM
+                document.getElementById('counter-preferencial').innerHTML = 'Chamar Preferencial ' + response[0];
+                document.getElementById('counter-comum').innerHTML = 'Chamar Comum ' + response[1];
+            }
+        };
+        xhttp.send();
+        //location.reload(true);
+        // mudar dps apenas para atualizar o numeros de senha em espera 
+    });
 </script>
+
 
 
 
 
 <div id="identifi-guiche" value="{{id}}"></div>
 
-{{!-- formulario senha atendiumento  // numero do guiche atual--}}
+{{!-- formulario senha atendiumento // numero do guiche atual--}}
 
 {{!-- pega id do guiche do params da fucao --}}
 
@@ -32,55 +47,57 @@ sockets.on('att-painel-guiche', function(data){
 
 <div class="main-adm flex-row">
 
-    <div class ="menu-bar-adm flex-coll">
-            <div class="btns btn-menu-custom-style flex-coll">
-                <p> Painel funcionario {{nome}} {{desc}}</p>
-            </div>
+    <div class="menu-bar-adm flex-coll">
+        <div class="btns btn-menu-custom-style flex-coll">
+            <p> Painel funcionario {{nome}} {{desc}}</p>
+        </div>
 
-            <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaGuiche(this.id)">
-                <i class="fa-spacing-right fa fa-times"></i>
-                <a>Fechar guiche</a>
-            </div>
-            
-            <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_guiche" onclick="">
-                <i class="fa-spacing-right fa fa-user-headset"></i>
-                <a>Atendimento</a>
-            </div>
-            <div class="btns btn-menu-custom-style flex-row " id="{{id}}" onclick="redirect_fila_espera(this.id)">
-                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
-                <a>Fila de Espera</a>
-            </div>
+        <div class="btns btn-menu-custom-style flex-row" id="{{id}}" onclick="fechaGuiche(this.id)">
+            <i class="fa-spacing-right fa fa-times"></i>
+            <a>Fechar guiche</a>
+        </div>
+
+        <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_guiche" onclick="">
+            <i class="fa-spacing-right fa fa-user-headset"></i>
+            <a>Atendimento</a>
+        </div>
+        <div class="btns btn-menu-custom-style flex-row " id="{{id}}" onclick="redirect_fila_espera(this.id)">
+            <i class="fa-spacing-right fa-solid fa-table-rows"></i>
+            <a>Fila de Espera</a>
+        </div>
     </div>
 
 
 
     <div class="group-content-adm flex-coll">
-        
+
         <div class="content-adm flex-coll">
-            {{!-- lsita giches  --}}
+            {{!-- lsita giches --}}
             <div class="modal-content-cancel-ficha" id="modal-content-cancel-ficha">
-                
+
                 <div class="modal-header flex-row">
                     <h2 class="fa-trasnparent ">Cancelar Senha</h2>
-                    <div class="btns flexbotao no-shadow-btn " id="btn-close-modal-add-guiche" onclick="FechaModalCancelSenhaGuiche()">
+                    <div class="btns flexbotao no-shadow-btn " id="btn-close-modal-add-guiche"
+                        onclick="FechaModalCancelSenhaGuiche()">
                         <i class="fa-trasnparent  fa-solid fa-times"></i>
                     </div>
                 </div>
-                
+
                 <div class="modal-body flex-row">
                     {{!-- info new giche --}}
                     <div class="btns" id="btn-volta-senha-guiche" onclick="CancelarSenhaGuicheConfirm(this.id)">
                         <p>Voltar senha para fila</p>
-                     </div>
-                     <div class="btns"  id ="btn-destroy-senha-guiche" onclick="CancelarSenhaGuicheConfirm(this.id)">
+                    </div>
+                    <div class="btns" id="btn-destroy-senha-guiche" onclick="CancelarSenhaGuicheConfirm(this.id)">
                         <p>Destruir Senha</p>
-                     </div>
+                    </div>
                 </div>
-                
+
                 <div class="modal-footer flex-row">
-                     <div class="btns flexbotao no-shadow-btn tools-btns-size " id="btn-add-guiche-cancelar" onclick="FechaModalCancelSenhaGuiche()">
+                    <div class="btns flexbotao no-shadow-btn tools-btns-size " id="btn-add-guiche-cancelar"
+                        onclick="FechaModalCancelSenhaGuiche()">
                         <p>Cancelar</p>
-                     </div>
+                    </div>
 
                 </div>
             </div>
@@ -89,17 +106,21 @@ sockets.on('att-painel-guiche', function(data){
             </div>
             <div class="grupo-actions-giches flex-row">
 
-                <div class="btns flex-row text-online"  value="{{id}}" id="btn-chama-preferencial-giche" onclick="atender_senha_recepcao(this.id)">
-                    <i class="fa-solid fa-wheelchair" style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
-                    <p>Chamar Preferencial {{qtd_senha_pref}}</p>
+                <div class="btns flex-row text-online" value="{{id}}" id="btn-chama-preferencial-giche"
+                    onclick="atender_senha_recepcao(this.id)">
+                    <i class="fa-solid fa-wheelchair"
+                        style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
+                    <p id="counter-preferencial">Chamar Preferencial {{qtd_senha_pref}}</p>
                 </div>
-                <div class="btns flex-row text-online"  value="{{id}}" id="btn-chama-comum-giche" onclick="atender_senha_recepcao(this.id)">
-                    <i class="fa-solid fa-user" style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
-                    <p>Chamar Comum {{qtd_senha_comum}}</p>
+                <div class="btns flex-row text-online" value="{{id}}" id="btn-chama-comum-giche"
+                    onclick="atender_senha_recepcao(this.id)">
+                    <i class="fa-solid fa-user"
+                        style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
+                    <p id="counter-comum">Chamar Comum {{qtd_senha_comum}}</p>
                 </div>
 
             </div>
-            
+
             {{!-- novo direcionamento para salas ficha func --}}
             <div class="group-ficha-redict" id="group-ficha-redict">
                 {{!-- combobox com salas --}}
@@ -152,11 +173,11 @@ sockets.on('att-painel-guiche', function(data){
                         <p>Encaminhar</p>
                     </div>
 
-                    <div class="btns flex-row" id="btn-abortar-senha-guiche"  onclick="CancelsenhaGuiche()">
+                    <div class="btns flex-row" id="btn-abortar-senha-guiche" onclick="CancelsenhaGuiche()">
                         <i class="fa-spacing-left fa-solid fa-times"></i>
                         <p>Abortar</p>
                     </div>
-                    <div class="btns flex-row" id="btn-abortar-senha-guiche"  onclick="RechamaGuiche()">
+                    <div class="btns flex-row" id="btn-abortar-senha-guiche" onclick="RechamaGuiche()">
                         <i class="fa-spacing-left fa-solid fa-rotate-right"></i>
                         <p>Rechamar</p>
                     </div>
