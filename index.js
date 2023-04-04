@@ -520,13 +520,13 @@ app.post('/respon_senha_preferencial', function (req, res) {
 });
 
 app.post('/respon_senha_preferencial_sala', function (req, res) {
-    const senha_comum = Post.findOne({ where: { status_senha: '2', tipo_senha: 'preferencial' }, order: [['createdat', 'ASC']] }).then(function (posts_edit) {
+    Post.findOne({ where: { status_senha: '2', tipo_senha: 'preferencial', tipo_sala: req.body.id_sala }, order: [['createdat', 'ASC']] }).then(function (posts_edit) {
         //    update senha 
 
         if (posts_edit == null) {
             res.send('error');
         } else {
-            //encaminha para a sala
+            //encaminha para a sala     //BUG ESTA POR AQUI
             Post.update({ status_senha: '3', historico_painel_sala: '2', id_status_sala: req.body.id_sala }, { where: { id: posts_edit.id } }).then(function () {
                 console.log(posts_edit);
                 res.status(200).send(posts_edit);
@@ -554,7 +554,7 @@ app.post('/respon_senha_preferencial_sala', function (req, res) {
 //chama senha comum
 app.post('/respon_comum_preferencial_sala', function (req, res) {
 
-    const senha_comum = Post.findOne({ where: { status_senha: '2', tipo_senha: 'comum' }, order: [['createdat', 'ASC']] }).then(function (posts_edit) {
+    const senha_comum = Post.findOne({ where: { status_senha: '2', tipo_senha: 'comum', tipo_sala: req.body.id_sala }, order: [['createdat', 'ASC']] }).then(function (posts_edit) {
         //    update senha 
 
         if (posts_edit == null) {
@@ -672,14 +672,13 @@ app.post('/encaminha_senha_guiche', function (req, res) {
     });
 });
 
-app.post('/encaminha_senha_sala_sala', function (req, res) {
+app.post('/encaminha_senha_sala_sala', function (req, res) { // BUG AQUI 
 
-    console.log('id da sala que encaminhou o paciente: ' + req.body.id_sala);
+    console.log('Uma sala encaminhou um paciente para outra sala:  ' + req.body.id_sala);
     console.log('id da senha: ' + req.body.id_senha);
     console.log('nome do paciente: ' + req.body.nome_cliente);
-    console.log('id da sala: ' + req.body.encaminhar_para);
-
-    console.log('chamar por nome ou numero: ' + req.body.chamar_por_current);
+    console.log('id da sala que vai receber a senha: ' + req.body.encaminhar_para);
+    console.log('chamar por nome ou numero: ' + req.body.chamar_por); 
     //atualizar id_status_giche para null e status_senha para 2 e nome_paciente e para qual sala foi encaminhado e se quer chamar a senha por nome ou numero de senha
     Post.update({
         status_senha: '2',
@@ -866,12 +865,48 @@ app.post('/qtd_senhas_guiche', function (req, res) {
 
 });
 
+// retorna quantidade de senhas em espera nas salas preferencial e comum
+
+app.post('/qtd_senhas_sala', function (req, res) {
+    console.log('verificando senhas na sala');
+    console.log('id da sala: ' + req.body.id_sala);
+    let id_sala = req.body.id_sala;
+    console.log('id_salaaaaaaaaaaaaaaaaaaaaaaaaa: ' + id_sala);
+// modificar para de acordo com a sala
+    const preferencial = Post.count({ where: { status_senha: '2', tipo_senha: 'preferencial',  tipo_sala: id_sala } }).then(function (posts_edit) {
+        if (posts_edit == null) {
+            return 0;
+        } else {
+            return posts_edit;
+        }
+
+    });
+    const comum = Post.count({ where: { status_senha: '2', tipo_senha: 'comum' , tipo_sala: id_sala } }).then(function (posts_edit) {
+        if (posts_edit == null) {
+            return 0;   
+        } else {
+            return posts_edit;
+        }
+
+    });
+
+    Promise.all([preferencial, comum]).then(function (values) {
+        console.log(values);
+        res.send(values);
+        console.log('preferencial: ' + values[0]);
+        console.log('comum: ' + values[1]);
+    }
+    );
+
+});
+
+
 
 
 
 
 io.on('connection', function (socket) {
-    console.log('Um usuário conectou');
+    console.log('Socket');
     // 
     socket.on('disconnect', function () {
         console.log('Um usuário desconectou');

@@ -682,7 +682,7 @@ function atender_senha_recepcao(id_clk){
         console.log('Id do guiche para att a senha '+id_guiche);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send('id_guiche='+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
-
+        
         
         // chama SetValuesFormGuiche
         // se null nao faz nada
@@ -692,6 +692,7 @@ function atender_senha_recepcao(id_clk){
             formulario.style.display = 'block';
             SetValuesFormGuiche(xhttp.responseText);
             socket.emit('att-painel-view-recep', 'show_senha_painel_recepcao');
+            socket.emit('senha_emit', 'att-painel-guiche');
             return status_guiche = true;
             
         }
@@ -722,6 +723,7 @@ function atender_senha_recepcao(id_clk){
             formulario.style.display = 'block';
             SetValuesFormGuiche(xhttp.responseText);
             socket.emit('att-painel-view-recep', 'show_senha_painel_recepcao');
+            socket.emit('senha_emit', 'att-painel-guiche');
             return status_guiche = true;
         }
         else{
@@ -855,8 +857,9 @@ function EncamainhaSenhaSala(id_guiche){
             status_guiche = false;
             // envia a sala para o servidor atualizar a pagina da sala 
             socket.emit('encaminha_senha_guiche_p_sala', encaminhar_para);
+            socket.emit('senha_emit', 'att-painel-guiche');
             // reload na pagina
-            window.location.reload();
+            //window.location.reload();
             return;
         }
         else{
@@ -979,7 +982,7 @@ function EncaminharSenhaSalaSala(id_sala){
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_encaminha, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send('id_senha='+id_senha+'&id_guiche='+id_sala+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send('id_senha='+id_senha+'&id_sala='+id_sala+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//A execução do script pára aqui até a requisição retornar do servidor
         console.log(xhttp.responseText);
         if (xhttp.responseText == 'ok'){
             // limpa os campos do formulario
@@ -998,6 +1001,7 @@ function EncaminharSenhaSalaSala(id_sala){
             status_guiche = false;
             // envia a sala para o servidor atualizar a pagina da sala 
             socket.emit('encaminha_senha_guiche_p_sala', encaminhar_para);
+            
             // reload na pagina
             window.location.reload();
             return;

@@ -1,21 +1,42 @@
+<script>
+    var sockets = io();
+    var host_ip1 = window.location.hostname + ':3000';
+    sockets.on('show_senha_painel_func_sala', function (data) {
+        // verifica se essa sala é o mesmo de data
+        console.log('nova senha encaminhada do guiche ou sala para a sala' + data);
+        console.log('tualizar pagina');
+        // getelementbyid('identifi-sala').value
+        var sala = document.getElementById('identifi-sala').getAttribute('value');
 
-<script> 
-var sockets = io();
-sockets.on('show_senha_painel_func_sala', function(data){
-    // verifica se essa sala é o mesmo de data
-    console.log('nova senha encaminhada do guiche para a sala' + data);
-    console.log('tualizar pagina');
-    // getelementbyid('identifi-sala').value
-    var sala = document.getElementById('identifi-sala').getAttribute('value');
-    if (sala == data) {
-        location.reload(true);
-    }
-    else{
-        console.log('sala diferente');
-        console.log('sala atual' + sala);
-        console.log('sala nova' + data);
-    }
-});
+        if (sala == data) {
+            // colocar aqui a requisicao  qtd_senhas_sala
+            console.log('Nova senha emitida atualizar pagina');
+            let xhttp = new XMLHttpRequest();
+            let url = 'http://' + host_ip1 + '/qtd_senhas_sala';
+            let id_sala = sala;
+            console.log('id sala');
+            console.log(id_sala);
+            xhttp.open('POST', url, true);
+            xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4 && this.status === 200) {
+                    let response = JSON.parse(this.responseText);
+                    console.log('resposta');
+                    console.log(response);
+                    // use response[0] PREFERENCIAL e response[1] COMUM
+                    document.getElementById('counter-preferencial').innerHTML = 'Chamar Preferencial ' + response[0];
+                    document.getElementById('counter-comum').innerHTML = 'Chamar Comum ' + response[1];
+                }
+            };
+            xhttp.send('id_sala=' + id_sala);
+        }
+        else {
+            console.log('sala diferente');
+            console.log('sala atual' + sala);
+            console.log('sala nova' + data);
+        }
+    });
 
 </script>
 
@@ -24,7 +45,7 @@ sockets.on('show_senha_painel_func_sala', function(data){
 
 <div id="identifi-sala" value="{{id_sala}}"></div>
 
-{{!-- formulario senha atendiumento  // numero do guiche atual--}}
+{{!-- formulario senha atendiumento // numero do guiche atual--}}
 
 {{!-- pega id do guiche do params da fucao --}}
 
@@ -40,58 +61,59 @@ sockets.on('show_senha_painel_func_sala', function(data){
 
 <div class="main-adm flex-row">
 
-    {{!-- <div class ="menu-bar-adm flex-coll">
+    {{!-- <div class="menu-bar-adm flex-coll">
 
-            <div class="menu-bar-adm-item2 flex-coll">
-                <p>Configurações</p>
-            </div>
+        <div class="menu-bar-adm-item2 flex-coll">
+            <p>Configurações</p>
+        </div>
 
-            <div class="menu-bar-adm-item flex-coll active-adm" id="pag_adm_guiche" onclick="">
-                <a>Atendimento</a>
-            </div>
-            <div class="menu-bar-adm-item flex-coll " id="{{id_sala}}" onclick="redirect_fila_espera_sala(this.id)">
-                <a>Fila de Espera</a>
-            </div>
+        <div class="menu-bar-adm-item flex-coll active-adm" id="pag_adm_guiche" onclick="">
+            <a>Atendimento</a>
+        </div>
+        <div class="menu-bar-adm-item flex-coll " id="{{id_sala}}" onclick="redirect_fila_espera_sala(this.id)">
+            <a>Fila de Espera</a>
+        </div>
 
 
-            <div class="menu-bar-adm-item flex-coll">
-                <a href="/adm/relatorios">Configurações Painel</a>
-            </div>
+        <div class="menu-bar-adm-item flex-coll">
+            <a href="/adm/relatorios">Configurações Painel</a>
+        </div>
     </div> --}}
-    <div class ="menu-bar-adm flex-coll">
-            <div class="btns btn-menu-custom-style flex-coll">
-                <p> Painel funcionario {{sala.dataValues.nome}} {{sala.dataValues.tipo_sala}}</p>
-            </div>
+    <div class="menu-bar-adm flex-coll">
+        <div class="btns btn-menu-custom-style flex-coll">
+            <p> Painel funcionario {{sala.dataValues.nome}} {{sala.dataValues.tipo_sala}}</p>
+        </div>
 
-            <div class="btns btn-menu-custom-style flex-row" id="{{id_sala}}" onclick="fechaSala(this.id)">
-                <i class="fa-spacing-right fa fa-times" style=" font-size: 20px;"></i>
-                <a>Fechar Sala</a>
-            </div>
-            
-            <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_guiche" onclick="">
-                <i class="fa-spacing-right fa fa-user-headset"></i>
-                <a>Atendimento</a>
-            </div>
-            <div class="btns btn-menu-custom-style flex-row "  id="{{id_sala}}" onclick="redirect_fila_espera_sala(this.id)">
-                <i class="fa-spacing-right fa-solid fa-table-rows"></i>
-                <a>Fila de Espera</a>
-            </div>
+        <div class="btns btn-menu-custom-style flex-row" id="{{id_sala}}" onclick="fechaSala(this.id)">
+            <i class="fa-spacing-right fa fa-times" style=" font-size: 20px;"></i>
+            <a>Fechar Sala</a>
+        </div>
+
+        <div class="btns btn-menu-custom-style flex-row active-adm" id="pag_adm_guiche" onclick="">
+            <i class="fa-spacing-right fa fa-user-headset"></i>
+            <a>Atendimento</a>
+        </div>
+        <div class="btns btn-menu-custom-style flex-row " id="{{id_sala}}" onclick="redirect_fila_espera_sala(this.id)">
+            <i class="fa-spacing-right fa-solid fa-table-rows"></i>
+            <a>Fila de Espera</a>
+        </div>
     </div>
-    
+
 
 
 
     <div class="group-content-adm flex-coll">
-        
+
 
         <div class="content-adm flex-coll">
-            {{!-- lsita giches  --}}
+            {{!-- lsita giches --}}
 
             <div class="modal-content-cancel-ficha" id="modal-content-cancel-ficha">
-                
+
                 <div class="modal-header flex-row">
                     <h2 class="fa-trasnparent ">Cancelar Senha</h2>
-                    <div class="btns flexbotao no-shadow-btn " id="btn-close-modal-add-guiche"onclick="FechaModalCancelSenhaSala()">
+                    <div class="btns flexbotao no-shadow-btn " id="btn-close-modal-add-guiche"
+                        onclick="FechaModalCancelSenhaSala()">
                         <i class="fa-trasnparent  fa-solid fa-times"></i>
                     </div>
                 </div>
@@ -101,37 +123,42 @@ sockets.on('show_senha_painel_func_sala', function(data){
                     {{!-- info new giche --}}
                     <div class="btns" id="btn-volta-senha-sala" onclick="CancelarSenhaSalaConfirm(this.id)">
                         <p>Voltar senha para fila</p>
-                     </div>
-                     <div class="btns"   id ="btn-destroy-senha-sala" onclick="CancelarSenhaSalaConfirm(this.id)">
+                    </div>
+                    <div class="btns" id="btn-destroy-senha-sala" onclick="CancelarSenhaSalaConfirm(this.id)">
                         <p>Destruir Senha</p>
-                     </div>
+                    </div>
                 </div>
 
                 <div class="modal-footer flex-row">
-                    <div class="btns flexbotao no-shadow-btn tools-btns-size"  id="btn-add-guiche-cancelar" onclick="FechaModalCancelSenhaSala()">
+                    <div class="btns flexbotao no-shadow-btn tools-btns-size" id="btn-add-guiche-cancelar"
+                        onclick="FechaModalCancelSenhaSala()">
                         <p>Cancelar</p>
-                     </div>
+                    </div>
                 </div>
-                
+
             </div>
-            
+
             <div class="box-title-giches flex-coll">
                 <h1>Novo Atendimento</h1>
             </div>
 
             <div class="grupo-actions-giches flex-row">
 
-                <div class="btns flex-row text-online"  value="{{id_sala}}" id="btn-chama-preferencial-sala" onclick="atender_senha_sala(this.id)">
-                    <i class="fa-solid fa-wheelchair" style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
-                    <p>Chamar Preferencial {{qtd_senha_pref}}</p>
+                <div class="btns flex-row text-online" value="{{id_sala}}" id="btn-chama-preferencial-sala"
+                    onclick="atender_senha_sala(this.id)">
+                    <i class="fa-solid fa-wheelchair"
+                        style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
+                    <p id="counter-preferencial">Chamar Preferencial {{qtd_senha_pref}}</p>
                 </div>
 
-                <div class="btns flex-row text-online"  value="{{id_sala}}" id="btn-chama-comum-sala" onclick="atender_senha_sala(this.id)">
-                    <i class="fa-solid fa-user" style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
-                    <p>Chamar Comum {{qtd_senha_comum}}</p>
+                <div class="btns flex-row text-online" value="{{id_sala}}" id="btn-chama-comum-sala"
+                    onclick="atender_senha_sala(this.id)">
+                    <i class="fa-solid fa-user"
+                        style=" font-size: 20px; color: rgb(0, 0, 0); margin-right: 5px; background-color:transparent;"></i>
+                    <p id="counter-comum">Chamar Comum {{qtd_senha_comum}}</p>
                 </div>
             </div>
-            
+
             {{!-- novo direcionamento para salas ficha func --}}
             <div class="group-ficha-redict" id="group-ficha-redict">
                 {{!-- combobox com salas --}}
@@ -180,21 +207,22 @@ sockets.on('show_senha_painel_func_sala', function(data){
                 </div>
 
                 <div class="form-item group-actions-senha-sala flex-row">
-                    <div class="btns flex-row"id="{{id_sala}}" onclick="EncaminharSenhaSalaSala(this.id)">
+                    <div class="btns flex-row" id="{{id_sala}}" onclick="EncaminharSenhaSalaSala(this.id)">
                         <i class="fa-spacing-left fa-solid fa-arrow-right"></i>
                         <p>Encaminhar</p>
                     </div>
-                    <div class="btns flex-row" id = "{{id_sala}}" onclick="FinalizaSenhaSala(this.id)">
+                    <div class="btns flex-row" id="{{id_sala}}" onclick="FinalizaSenhaSala(this.id)">
                         <i class="fa-spacing-left fa-solid fa-check"></i>
                         <p>Finalizar</p>
                     </div>
 
-                    <div class="btns flex-row" id="btn-abortar-senha-guiche"  onclick="CancelsenhaSala()">
+                    <div class="btns flex-row" id="btn-abortar-senha-guiche" onclick="CancelsenhaSala()">
                         <i class="fa-spacing-left fa-solid fa-times"></i>
                         <p>Abortar</p>
                     </div>
 
-                    <div class="btns flex-row" style="width: 80px; font-size:12px;" id="btn-abortar-senha-guiche"  onclick="RechamaSala()">
+                    <div class="btns flex-row" style="width: 80px; font-size:12px;" id="btn-abortar-senha-guiche"
+                        onclick="RechamaSala()">
                         <i class="fa-spacing-left fa-solid fa-rotate-right"></i>
                         <p>Rechamar</p>
                     </div>
