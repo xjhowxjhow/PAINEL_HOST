@@ -249,7 +249,7 @@ function resetar_all_senha() {
 //     let config_adm = 'http://'+host_ip+'/config_adm';
 //     let view_guiches = 'http://'+host_ip+'/view_guiche';
 //     let view_salas = 'http://'+host_ip+'/view_salas';
-//     let contentDiv = document.getElementById('contentdevice'); // adicione este elemento no seu HTML
+//     let contentDiv = document.getElementById('contentdevice'); // 
 
   
 //     if (id_clk == 'device_btn_adm'){

@@ -971,7 +971,7 @@ app.post('/reset_senhas', function (req, res) {
 
 
 Server.listen(3000, () => {
-    console.log('Servidor rodando )');
+    console.log('Servidor rodando na porta 3000 )');
 });
 
 
