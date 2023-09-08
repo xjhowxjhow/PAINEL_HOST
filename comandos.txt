@@ -1,8 +1,0 @@
-para executar o servidor
-nodemon app.js
-$ npm install nodemon
-$ npm install --save sequelize
-$ npm install --save mysql2
-$ npm install --save body-parser
-$ npm install --save sequelize sqlite3
-$ npm install socket.io --save
