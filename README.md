@@ -24,9 +24,10 @@ Funcionalidades:
 
 # INSTALACAO
 
-#1 - Instale o Node.JS em sua máquina (https://nodejs.org/en/download/)
-#2 - Clone o repositório em sua máquina
-#3 - Abra o terminal e navegue até a pasta do projeto
-#4 - Execute o comando: npm install
-#5 - Execute o comando: node index.js
-#6 - Acesse o endereço: http://seuiplocal:3000
+- Instale o Node.JS em sua máquina (https://nodejs.org/en/download/)
+- Clone o repositório em sua máquina
+- Abra o terminal e navegue até a pasta do projeto
+- Execute o comando: ```bash
+  npm install```
+- Execute o comando: ```node index.js``` ou se preferir pode utilizar o nodemon.js ```nodemon index.js```
+- Acesse o endereço: http://seuiplocal:3000
