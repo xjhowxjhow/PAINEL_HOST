@@ -31,3 +31,20 @@ Funcionalidades:
   npm install```
 - Execute o comando: ```node index.js``` ou se preferir pode utilizar o nodemon.js ```nodemon index.js```
 - Acesse o endereço: http://seuiplocal:3000
+
+
+# Backgrounds:
+- Painel 1
+- ![6](https://github.com/xjhowxjhow/PAINEL_HOST/assets/58306583/1d372bbf-b159-48ed-bb9b-51f52bde4a23)
+
+- Painel 2:
+- ![8](https://github.com/xjhowxjhow/PAINEL_HOST/assets/58306583/a670bba8-7da8-432d-8b51-8a1faaf8a8cd)
+
+- Menu de servicos:
+- ![1](https://github.com/xjhowxjhow/PAINEL_HOST/assets/58306583/9f95c20d-45b4-42e5-9bef-7c28d9940582)
+
+- Toten:
+- ![3](https://github.com/xjhowxjhow/PAINEL_HOST/assets/58306583/0ee2c915-df76-4583-a618-2b9870f11bed)
+
+- Painel Guiche (Atendimento) / Salas de atendimentos ( Redirecionamento/encaminhamento)
+- ![4](https://github.com/xjhowxjhow/PAINEL_HOST/assets/58306583/6014a81d-b630-489e-907d-ccc8c315cb64)
