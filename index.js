@@ -526,7 +526,7 @@ app.post('/respon_senha_preferencial_sala', function (req, res) {
         if (posts_edit == null) {
             res.send('error');
         } else {
-            //encaminha para a sala     //BUG ESTA POR AQUI
+            //encaminha para a sala 
             Post.update({ status_senha: '3', historico_painel_sala: '2', id_status_sala: req.body.id_sala }, { where: { id: posts_edit.id } }).then(function () {
                 console.log(posts_edit);
                 res.status(200).send(posts_edit);
@@ -754,18 +754,15 @@ app.post('/request_senha_preferencial', function (req, res) {
     console.log('que esta solicitando a senha');
     current_date = new Date();
     format = moment(current_date).format('YYYY-MM-DD');
-    // select * from painel_hosts where createdAt  like '%2023-02-18%'
     console.log('data atual: ' + format);
-    Post.findOne({ order: [['createdat', 'DESC']], where: { createdat: { [Op.like]: '%' + format + '%' } } }).then(function (posts_edit) {
+    // SELECT MAX(senha) FROM posts;
+    Post.max('senha').then(function (posts_edit) {
         //verfica se tem senha
+        console.log('senha maxima: ' + posts_edit);
         if (posts_edit == null) {
-            console.log('senha gerada pq nao tem senha: 1 0', posts_edit);
             var senha = 1;
         } else {      // passa senha para inteiro e soma mais 1
-            var senha = parseInt(posts_edit.senha) + 1;
-            console.log('senha gerada: ' + senha);
-            // var senha = senha.toString();
-            // var senha = senha+'P';
+            var senha = posts_edit + 1;
         }
         //salva no banco de dados
         Post.create({
@@ -791,15 +788,14 @@ app.post('/request_senha_comum', function (req, res) {
 
     current_date = new Date();
     format = moment(current_date).format('YYYY-MM-DD');
-    // select * from painel_hosts where createdAt  like '%2023-02-18%'
     console.log('data atual: ' + format);
-    Post.findOne({ order: [['createdat', 'DESC']], where: { createdat: { [Op.like]: '%' + format + '%' } } }).then(function (posts_edit) {
+    // SELECT MAX(senha) FROM posts;    
+    Post.max('senha').then(function (posts_edit) {
         //verfica se tem senha
         if (posts_edit == null) {
             var senha = 1;
-        } else {      // passa senha para inteiro e soma mais 1
-            console.log('ultima senha gerada: ' + posts_edit.senha);
-            var senha = parseInt(posts_edit.senha) + 1;
+        } else {      
+            var senha =posts_edit + 1;
         }
         //salva no banco de dados
         Post.create({

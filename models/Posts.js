@@ -5,7 +5,7 @@ const db = require('./db'); // importa o módulo db.js
 const Post = db.sequelize.define('painel_hosts', { // cria um modelo de tabela no banco de dados # postagens = nome da tabela
 
     senha:{
-            type: db.Sequelize.STRING
+            type: db.Sequelize.INTEGER
     },
     tipo_senha:{
                type: db.Sequelize.STRING

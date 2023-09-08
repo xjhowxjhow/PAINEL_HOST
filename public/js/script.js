@@ -70,7 +70,7 @@ function url_recep_newatendi(){
         // headers
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         // body
-        xhttp.send("id_guiche="+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send("id_guiche="+id_guiche);//
          
         var response = xhttp.responseText;
         if (response != 'error'){
@@ -113,7 +113,7 @@ function url_sala_newatendi(){
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_bkp_atendimento, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("id_sala="+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send("id_sala="+id_sala);//
          
         var response = xhttp.responseText;
         if (response != 'error'){
@@ -188,7 +188,7 @@ function choiceDevice(id_clk){
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("login="+login+"&senha="+senha);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send("login="+login+"&senha="+senha);//
     var response = xhttp.responseText;
     if (response == 'error'){
         alert('Usuario ou senha incorretos');
@@ -426,7 +426,7 @@ getElm("btn-add-guiche-salvar").addEventListener("click", function() {
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("guiche="+input_guiche+"&desc="+input_desc);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send("guiche="+input_guiche+"&desc="+input_desc);//
         if (xhttp.responseText == 'ok'){
             alert('Guiche adicionado com sucesso');
             getElm("modal-giche").style.display = "none";
@@ -454,7 +454,7 @@ function delete_guiche_list(id_guiche) {
     xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id_guiche="+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send("id_guiche="+id_guiche);//
     if (xhttp.responseText == 'ok'){
         alert('Guiche deletado com sucesso');
         location.reload();
@@ -499,7 +499,7 @@ function add_new_sala() {
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send("sala="+input_sala+"&desc="+input_tipo);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send("sala="+input_sala+"&desc="+input_tipo);//
         if (xhttp.responseText == 'ok'){
             alert('sala adicionado com sucesso');
             getElm("modal-giche").style.display = "none";
@@ -527,7 +527,7 @@ function delete_sala_list(id_sala) {
     xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id_sala="+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send("id_sala="+id_sala);//
     if (xhttp.responseText == 'ok'){
         alert('sala deletado com sucesso');
         location.reload();
@@ -556,7 +556,7 @@ function fechaGuiche(id_guiche){
     xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id_guiche="+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send("id_guiche="+id_guiche);//
     if (xhttp.responseText == 'ok'){
         alert('Guiche fechado com sucesso');
         // redirect view_guiches
@@ -576,7 +576,7 @@ function fechaSala(id_sala){
     xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("id_sala="+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send("id_sala="+id_sala);//
     if (xhttp.responseText == 'ok'){
         alert('Sala fechado com sucesso');
         // redirect view_guiches
@@ -611,8 +611,8 @@ function solicitar_senha(id_clk){
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_preferencial, false);
 
-        xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-        console.log(xhttp.responseText); //Aqui você pode fazer o que quiser com a resposta do servidor
+        xhttp.send();//
+        console.log(xhttp.responseText); //
         //seta o valor da senha no html do h1
         getElm('genera_senha').innerHTML = xhttp.responseText;
         // envia um emit para o servidor do sokcet io
@@ -622,8 +622,8 @@ function solicitar_senha(id_clk){
         console.log('comum');
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_comum, false);
-        xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-        console.log(xhttp.responseText); //Aqui você pode fazer o que quiser com a resposta do servidor
+        xhttp.send();
+        console.log(xhttp.responseText); //
         //seta o valor da senha no html do h1
         getElm('genera_senha').innerHTML = xhttp.responseText;
         socket.emit('senha_emit', 'att-painel-guiche');
@@ -644,7 +644,7 @@ function atender_senha(id_clk){ // nao usa mais
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_preferencial, false);
 
-        xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send();//
         console.log(xhttp.responseText); 
         // envia um emit para o servidor do sokcet io
         socket.emit('att-painel-view-recep', 'show_senha_painel_recepcao');
@@ -653,8 +653,8 @@ function atender_senha(id_clk){ // nao usa mais
         console.log('comum');
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_comum, false);
-        xhttp.send();//A execução do script pára aqui até a requisição retornar do servidor
-        console.log(xhttp.responseText); //Aqui você pode fazer o que quiser com a resposta do servidor
+        xhttp.send();//
+        console.log(xhttp.responseText); 
         socket.emit('att-painel-view-recep', 'show_senha_painel_recepcao');
     }
 
@@ -681,7 +681,7 @@ function atender_senha_recepcao(id_clk){
         var id_guiche = getElm('btn-chama-preferencial-giche').getAttribute('value');
         console.log('Id do guiche para att a senha '+id_guiche);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send('id_guiche='+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send('id_guiche='+id_guiche);//
         
         
         // chama SetValuesFormGuiche
@@ -713,7 +713,7 @@ function atender_senha_recepcao(id_clk){
         console.log('Id do guiche para att a senha '+id_guiche);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-        xhttp.send('id_guiche='+id_guiche);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send('id_guiche='+id_guiche);//
 
         // chama SetValuesFormGuiche
         // se null nao faz nada
@@ -794,7 +794,7 @@ function CancelarSenhaGuicheConfirm(id_btn){
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url_cancel, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('id_guiche='+id_guiche+'&action='+action);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send('id_guiche='+id_guiche+'&action='+action);//
     console.log(xhttp.responseText);
     if (xhttp.responseText == 'ok'){
         // limpa os campos do formulario
@@ -838,7 +838,7 @@ function EncamainhaSenhaSala(id_guiche){
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_encaminha, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send('id_senha='+id_senha+'&id_guiche='+id_guiche+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send('id_senha='+id_senha+'&id_guiche='+id_guiche+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//
         console.log(xhttp.responseText);
         if (xhttp.responseText == 'ok'){
             // limpa os campos do formulario
@@ -908,7 +908,7 @@ function atender_senha_sala(id_clk){
             var id_sala = getElm('btn-chama-preferencial-sala').getAttribute('value');
             console.log('Id do sala para att a senha '+id_sala);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send('id_sala='+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+            xhttp.send('id_sala='+id_sala);//
 
         
         // chama SetValuesFormGuiche
@@ -935,7 +935,7 @@ function atender_senha_sala(id_clk){
             var id_sala = getElm('btn-chama-comum-sala').getAttribute('value');
             console.log('Id do sala para att a senha '+id_sala);
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send('id_sala='+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+            xhttp.send('id_sala='+id_sala);//
             
             if (xhttp.responseText != 'error'){
                 let formulario = getElm('group-ficha-redict');
@@ -982,7 +982,7 @@ function EncaminharSenhaSalaSala(id_sala){
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", url_encaminha, false);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp.send('id_senha='+id_senha+'&id_sala='+id_sala+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//A execução do script pára aqui até a requisição retornar do servidor
+        xhttp.send('id_senha='+id_senha+'&id_sala='+id_sala+'&encaminhar_para='+encaminhar_para+'&chamar_por='+chamar_por_current+'&nome_cliente='+nome_cliente);//
         console.log(xhttp.responseText);
         if (xhttp.responseText == 'ok'){
             // limpa os campos do formulario
@@ -1023,7 +1023,7 @@ function FinalizaSenhaSala(id_sala){
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('id_sala='+id_sala);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send('id_sala='+id_sala);//
     console.log(xhttp.responseText);
     if (xhttp.responseText == 'ok'){
         // limpa os campos do formulario
@@ -1079,7 +1079,7 @@ function CancelarSenhaSalaConfirm(id_btn){
     let xhttp = new XMLHttpRequest();
     xhttp.open("POST", url_cancel, false);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send('id_sala='+id_sala+'&action='+action);//A execução do script pára aqui até a requisição retornar do servidor
+    xhttp.send('id_sala='+id_sala+'&action='+action);//
     console.log(xhttp.responseText);
     if (xhttp.responseText == 'ok'){
         // limpa os campos do formulario
