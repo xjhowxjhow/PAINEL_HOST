@@ -20,3 +20,13 @@ Funcionalidades:
 4 - A cronologia do sistema de senhas é sempre pela ordem de chegada, mantendo assim um fluxo correto.
 
 5 - Possibilidade de exibição no painel a senha por número/nome do cliente, fica a critério do atendente.
+
+
+# INSTALACAO
+
+#1 - Instale o Node.JS em sua máquina (https://nodejs.org/en/download/)
+#2 - Clone o repositório em sua máquina
+#3 - Abra o terminal e navegue até a pasta do projeto
+#4 - Execute o comando: npm install
+#5 - Execute o comando: node index.js
+#6 - Acesse o endereço: http://seuiplocal:3000
